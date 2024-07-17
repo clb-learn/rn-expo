@@ -1,15 +1,26 @@
-import { Text, View } from "react-native";
+
+
+import React from "react";
+
+import {
+   PageFooter,
+} from "../assets/modules/clb-modules";
+
+import {
+   StyleSheet,
+   ScrollView,
+   View,
+   Text,
+   Image,
+} from "react-native";
 
 export default function Index() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
-      <Text>Edit app/index.tsx to edit this screen.</Text>
-    </View>
-  );
+
+
+   return( <>
+      <ScrollView>
+         <View style={ { flex: 1, } }></View>
+         <PageFooter />
+      </ScrollView>
+   </> );
 }
