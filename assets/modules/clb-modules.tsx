@@ -13,6 +13,8 @@ import {
 } from "react-native";
 
 
+/* == [ AppBar ]
+== == == == == == == == == */
 export function AppBar( { ...props } ) {
 
 
@@ -31,3 +33,7 @@ export function AppBar( { ...props } ) {
       </View>
    </> );
 } 
+
+
+/* == [ Page-Footer ]
+== == == == == == == == == */
