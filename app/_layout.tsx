@@ -75,7 +75,9 @@ export default function RootLayout() {
                      style={ {
                         resizeMode: "contain",
                         width: 140,
+                        height: 56,
                         alignSelf: "center",
+                        
                      } }
                   />
                </> ),

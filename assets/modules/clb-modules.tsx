@@ -39,19 +39,19 @@ export function AppBar( { ...props } ) {
             
          } }
       >
-         {/* <View style={ {
+         <View style={ {
             backgroundColor: "#00559C",
             height: 80,
          } }>
-            <Image 
+            {/* <Image 
                source={ require( "../images/EA/EA-appbar-logo.png" ) }
                style={ {
                   resizeMode: "contain",
                   width: 100,
                } }
             >
-            </Image>
-         </View> */}
+            </Image> */}
+         </View>
       </View>
    </> );
 } 
@@ -151,7 +151,7 @@ export function BottomNavigationBar() {
          activeColor={ "#00559C" }
          inactiveColor={ "#fff" }
          keyboardHidesNavigationBar={ true }
-         barStyle={ { backgroundColor: "#16181C" } }
+         barStyle={ { backgroundColor: "#16181C", } }
       />
    </> );
 };
@@ -185,8 +185,8 @@ export function PageFooter( { ...props } ) {
             aspectRatio: "1 / .5",
             alignItems: "center",
             justifyContent: "center",
-            marginTop: 36,
-            marginBottom: 36,
+            // marginTop: 36,
+            // marginBottom: 36,
          },
       } ) 
    ;
@@ -195,7 +195,7 @@ export function PageFooter( { ...props } ) {
       <View style={ { 
          backgroundColor: "#000", 
          width: "100%",
-         height: 400,   
+         // height: 400,   
          alignItems: "center",
          // justifyContent: "center",
       } }>
