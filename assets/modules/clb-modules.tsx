@@ -126,13 +126,30 @@ export function BottomNavigationBar() {
          navigationState={ { index, routes } }
          onIndexChange={ setIndex }
          renderScene={ renderScene }
+         /* renderIcon={ 
+            () => ( <>
+               <Text>icon</Text>
+            </> )
+         } */
+         /* renderTouchable={ () => ( <>
+            <View style={{
+               backgroundColor: "#212329",
+               flex: 1,
+               height: 50,
+               padding: 8,
+               borderColor: "#fc0fc0",
+            }} />
+         </> ) } */
+         /* barStyle={{
+            backgroundColor: "#fc0",
+         }} */
          // sceneAnimationType={ "shifting" || "opacity" }
          sceneAnimationType={ "opacity" }
          shifting={ true }
          labeled={ true }
          compact={ true }
-         activeColor={ "#fff" }
-         inactiveColor={ "#00559C" }
+         activeColor={ "#00559C" }
+         inactiveColor={ "#fff" }
          keyboardHidesNavigationBar={ true }
          barStyle={ { backgroundColor: "#16181C" } }
       />
@@ -206,7 +223,7 @@ export function PageFooter( { ...props } ) {
             </View>
             <View>
                <Text style={ [ s.p, s.b, ] }>( 13 ) 99768-5853 </Text>
-         </View>
+            </View>
          </View>
          <View>
             <Text style={ [ s.p, s.b, ] }>eletrica.art.ltda@gmail.com</Text>

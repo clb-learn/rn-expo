@@ -69,7 +69,16 @@ export default function RootLayout() {
          <Stack.Screen
             name="index"
             options={{
-               headerTitle: "Eletrica & Art",
+               // headerTitle: "Eletrica & Art",
+               headerTitle: () => ( <>
+                  <Image source={ require( "../assets/images/EA/EA-logo-appbar-2.png" ) }
+                     style={ {
+                        resizeMode: "contain",
+                        width: 140,
+                        alignSelf: "center",
+                     } }
+                  />
+               </> ),
                headerRight: () => (
                   <Text style={ { color: "#fff", } }>ninsod</Text>
                   // <Button onPress={() => setCount(c => c + 1)} title="Update count" />
