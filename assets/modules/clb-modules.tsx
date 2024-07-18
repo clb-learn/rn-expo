@@ -66,7 +66,7 @@ export function AppBarLeft( { ...props } ) {
             // backgroundColor: "#672",
          } }
       >
-         <Text style={ { color: "#fff", } }>oi</Text>
+         <Text style={ { color: "#fff", } }>🔲</Text>
       </View>
    </> );
 } 
@@ -81,7 +81,7 @@ export function AppBarRight( { ...props } ) {
             // backgroundColor: "#454",
          } }
       >
-         <Text style={ { color: "#fff", } }>oi</Text>
+         <Text style={ { color: "#fff", } }>🔲</Text>
       </View>
    </> );
 } 

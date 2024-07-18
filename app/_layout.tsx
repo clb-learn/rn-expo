@@ -80,7 +80,7 @@ export default function RootLayout() {
                   />
                </> ),
                headerRight: () => (
-                  <Text style={ { color: "#fff", } }>ninsod</Text>
+                  <Text style={ { color: "#fff", } }>🔲</Text>
                   // <Button onPress={() => setCount(c => c + 1)} title="Update count" />
                ),
             }}
