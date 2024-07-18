@@ -1,16 +1,17 @@
 {
   "expo": {
-    "name": "expo-template-app",
-    "slug": "expo-template-app",
+    "name": "rn-expo",
+    "slug": "rn-expo",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/EA/globo de plasma - 7.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
+    "repo": "github",
     "splash": {
-      "image": "./assets/images/splash.png",
+      "image": "./assets/images/EA/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#00559c"
     },
     "ios": {
       "supportsTablet": true
@@ -18,12 +19,12 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "backgroundColor": "#1b1d22"
       }
     },
     "web": {
       "bundler": "metro",
-      "output": "static",
+      "output": "single",
       "favicon": "./assets/images/favicon.png"
     },
     "plugins": [
@@ -36,6 +37,7 @@
       ]
     ],
     "experiments": {
+      "baseUrl": "/rn-expo",
       "typedRoutes": true
     }
   }
