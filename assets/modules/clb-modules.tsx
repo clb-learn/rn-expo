@@ -123,6 +123,7 @@ export function BottomNavigationBar() {
 
    return( <>
       <BottomNavigation
+      theme={{colors: {secondaryContainer: "#212329"}}}
          navigationState={ { index, routes } }
          onIndexChange={ setIndex }
          renderScene={ renderScene }
