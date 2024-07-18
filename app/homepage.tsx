@@ -20,8 +20,11 @@ export default function Homepage( { ...props } ) {
 
 
    return( <>
-      <View style={ { flex: 1, backgroundColor: "#16181C", } }>
-         { props.page }
-      </View>
+      <ScrollView style={ { flex: 1, minHeight: "100%", backgroundColor: "#16181C", } }>
+         <View style={{ flex: 1, minHeight: "130%", }}>
+            { props.page }
+         </View>
+         <PageFooter />
+      </ScrollView>
    </> );
 }

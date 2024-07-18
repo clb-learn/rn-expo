@@ -93,7 +93,6 @@ export function AppBarRight( { ...props } ) {
 const 
    HomeRoute = () => <Text>Home</Text>
    ,
-   // CustomersRoute = () => <Text>Clientes</Text>
    CustomersRoute = () => (
       <Homepage page={ <Customers /> } />
    )
@@ -104,26 +103,37 @@ const
 ;
 
 export function BottomNavigationBar() {
-   const [index, setIndex] = React.useState(0);
-   const [routes] = React.useState([
-      { key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
-      { key: 'customers', title: 'Customers', focusedIcon: 'album' },
-      { key: 'recents', title: 'Recents', focusedIcon: 'history' },
-      { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
-   ]);
+   const 
+      [ index, setIndex ] = React.useState( 0 )
+      ,
+      [ routes ] = React.useState( [
+         { key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
+         { key: 'customers', title: 'Customers', focusedIcon: 'album' },
+         { key: 'recents', title: 'Recents', focusedIcon: 'history' },
+         { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
+      ] )
+   ;
 
-   const renderScene = BottomNavigation.SceneMap({
+   const renderScene = BottomNavigation.SceneMap( {
       home: HomeRoute,
       customers: CustomersRoute,
       recents: RecentsRoute,
       notifications: NotificationsRoute,
-   });
+   } );
 
    return( <>
       <BottomNavigation
-         navigationState={{ index, routes }}
-         onIndexChange={setIndex}
-         renderScene={renderScene}
+         navigationState={ { index, routes } }
+         onIndexChange={ setIndex }
+         renderScene={ renderScene }
+         sceneAnimationType={ "shifting" || "opacity" }
+         shifting={ true }
+         labeled={ true }
+         compact={ true }
+         activeColor={ "#fc0" }
+         inactiveColor={ "#fc0" }
+         keyboardHidesNavigationBar={ true }
+         barStyle={ { backgroundColor: "#16181C" } }
       />
    </> );
 };
@@ -176,7 +186,6 @@ export function PageFooter( { ...props } ) {
                } }
             />
          </View>
-
          <View style={ s.pd }>
             <Text style={ s.h3 }>CNPJ 32.858.892/0001-52 - IM 67358/0001</Text>
          </View>
