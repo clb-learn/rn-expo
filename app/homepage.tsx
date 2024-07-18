@@ -16,14 +16,12 @@ import {
 } from "react-native";
 
 
-export default function Index() {
+export default function Homepage( { ...props } ) {
 
 
    return( <>
-      {/* <ScrollView>
-         <View style={ { flex: 1, } }></View>
-         <PageFooter />
-      </ScrollView> */}
-      <BottomNavigationBar />
+      <View style={ { flex: 1, backgroundColor: "#16181C", } }>
+         { props.page }
+      </View>
    </> );
 }

@@ -16,14 +16,13 @@ import {
 } from "react-native";
 
 
-export default function Index() {
+export default function Customers( { ...props } ) {
 
 
    return( <>
-      {/* <ScrollView>
-         <View style={ { flex: 1, } }></View>
-         <PageFooter />
-      </ScrollView> */}
-      <BottomNavigationBar />
+      <View style={ { flex: 1, backgroundColor: "#212329", } }>
+         <Text style={ { flex: 1, color: "#fc0", } }>Clientes</Text>
+         {/* <PageFooter /> */}
+      </View>
    </> );
 }

@@ -1,5 +1,6 @@
 
 
+import HomeScreen from "@/app-example/app/(tabs)";
 import React from "react";
 
 import {
@@ -12,6 +13,12 @@ import {
    TouchableOpacity,
 } from "react-native";
 
+
+import { BottomNavigation } from "react-native-paper";
+import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
+
+import Homepage from "../../app/homepage";
+import Customers from "../../app/customers";
 
 /* == [ AppBar ]
 == == == == == == == == == */
@@ -56,10 +63,10 @@ export function AppBarLeft( { ...props } ) {
       <View 
          style={ {
             // height: "100%",
-            backgroundColor: "#672",
+            // backgroundColor: "#672",
          } }
       >
-         <Text>oi</Text>
+         <Text style={ { color: "#fff", } }>oi</Text>
       </View>
    </> );
 } 
@@ -71,33 +78,125 @@ export function AppBarRight( { ...props } ) {
       <View 
          style={ {
             // height: "100%",
-            backgroundColor: "#454",
+            // backgroundColor: "#454",
          } }
       >
-         <Text>oi</Text>
+         <Text style={ { color: "#fff", } }>oi</Text>
       </View>
    </> );
 } 
 
 
+
+/* == [ BottomNavigation ]
+== == == == == == == == == */
+const 
+   HomeRoute = () => <Text>Home</Text>
+   ,
+   // CustomersRoute = () => <Text>Clientes</Text>
+   CustomersRoute = () => (
+      <Homepage page={ <Customers /> } />
+   )
+   ,
+   RecentsRoute = () => <Text>Recents</Text>
+   ,
+   NotificationsRoute = () => <Text>Notifications</Text>
+;
+
+export function BottomNavigationBar() {
+   const [index, setIndex] = React.useState(0);
+   const [routes] = React.useState([
+      { key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
+      { key: 'customers', title: 'Customers', focusedIcon: 'album' },
+      { key: 'recents', title: 'Recents', focusedIcon: 'history' },
+      { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
+   ]);
+
+   const renderScene = BottomNavigation.SceneMap({
+      home: HomeRoute,
+      customers: CustomersRoute,
+      recents: RecentsRoute,
+      notifications: NotificationsRoute,
+   });
+
+   return( <>
+      <BottomNavigation
+         navigationState={{ index, routes }}
+         onIndexChange={setIndex}
+         renderScene={renderScene}
+      />
+   </> );
+};
+
+
 /* == [ Page-Footer ]
 == == == == == == == == == */
 export function PageFooter( { ...props } ) {
+   const 
+      s = StyleSheet.create( {
+         section: {
+            
+         },
+         h3: {
+            color: "#fff", alignItems: "center", justifyContent: "center",
+            fontSize: 18, fontWeight: "bold",
+         },
+         p: {
+            color: "#fff", alignItems: "center", justifyContent: "center",
+
+         },
+         b: {
+            fontWeight: "bold",
+         },
+         pd: { padding: 6, },
+         picture: {
+            // backgroundColor: "#27f",
+            width: "100%",
+            aspectRatio: "1 / .5",
+            alignItems: "center",
+            justifyContent: "center",
+         },
+      } ) 
+   ;
 
    return( <>
       <View style={ { 
          backgroundColor: "#16181c", 
-         flex: .5,   
+         width: "100%",
+         height: 400,   
          alignItems: "center",
-         justifyContent: "center",
+         // justifyContent: "center",
       } }>
-         <Image 
-            source={ require( "../images/EA/EA-appbar-logo.png" ) }
-            style={ {
-               resizeMode: "contain",
-               width: "70%",
-            } }
-         />
+         <View style={ s.picture }>
+            <Image 
+               source={ require( "../images/EA/EA-appbar-logo.png" ) }
+               style={ {
+                  resizeMode: "contain",
+                  width: "70%",
+               } }
+            />
+         </View>
+
+         <View style={ s.pd }>
+            <Text style={ s.h3 }>CNPJ 32.858.892/0001-52 - IM 67358/0001</Text>
+         </View>
+         <View>
+            <Text style={ s.p }>Rua José Alves Maciel, 40 - Aviação</Text>
+         </View>
+         <View>
+            <Text style={ s.p }>Praia Grande - São Paulo - SP - Cep 11702-440</Text>
+         </View>
+         <View style={ s.pd }>
+            <View>
+               <Text style={ [ s.p, s.b, ] }>( 13 ) 99768-5853 </Text>
+            </View>
+            <View>
+               <Text style={ [ s.p, s.b, ] }>( 13 ) 99768-5853 </Text>
+         </View>
+         </View>
+         <View>
+            <Text style={ [ s.p, s.b, ] }>eletrica.art.ltda@gmail.com</Text>
+         </View>
       </View>
    </> );
 }
