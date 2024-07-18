@@ -109,7 +109,7 @@ export function BottomNavigationBar() {
       [ routes ] = React.useState( [
          { key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
          { key: 'customers', title: 'Customers', focusedIcon: 'album' },
-         { key: 'recents', title: 'Recents', focusedIcon: 'history' },
+         { key: 'recents', title: 'Recents', focusedIcon: 'history', backgroundColor: "#fc0" },
          { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
       ] )
    ;
@@ -126,12 +126,13 @@ export function BottomNavigationBar() {
          navigationState={ { index, routes } }
          onIndexChange={ setIndex }
          renderScene={ renderScene }
-         sceneAnimationType={ "shifting" || "opacity" }
+         // sceneAnimationType={ "shifting" || "opacity" }
+         sceneAnimationType={ "opacity" }
          shifting={ true }
          labeled={ true }
          compact={ true }
-         activeColor={ "#fc0" }
-         inactiveColor={ "#fc0" }
+         activeColor={ "#fff" }
+         inactiveColor={ "#00559C" }
          keyboardHidesNavigationBar={ true }
          barStyle={ { backgroundColor: "#16181C" } }
       />
@@ -150,11 +151,13 @@ export function PageFooter( { ...props } ) {
          h3: {
             color: "#fff", alignItems: "center", justifyContent: "center",
             fontSize: 18, fontWeight: "bold",
+            textAlign: "center",
          },
          p: {
             color: "#fff", alignItems: "center", justifyContent: "center",
-
+            textAlign: "center",
          },
+         taCenter: { textAlign: "center", },
          b: {
             fontWeight: "bold",
          },
@@ -165,24 +168,26 @@ export function PageFooter( { ...props } ) {
             aspectRatio: "1 / .5",
             alignItems: "center",
             justifyContent: "center",
+            marginTop: 36,
+            marginBottom: 36,
          },
       } ) 
    ;
 
    return( <>
       <View style={ { 
-         backgroundColor: "#16181c", 
+         backgroundColor: "#000", 
          width: "100%",
          height: 400,   
          alignItems: "center",
          // justifyContent: "center",
       } }>
-         <View style={ s.picture }>
+         <View style={ [s.picture, ] }>
             <Image 
-               source={ require( "../images/EA/EA-appbar-logo.png" ) }
+               source={ require( "../images/EA/EA-logo-footer.png" ) }
                style={ {
                   resizeMode: "contain",
-                  width: "70%",
+                  width: "90%",
                } }
             />
          </View>
