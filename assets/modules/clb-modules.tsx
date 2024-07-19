@@ -229,6 +229,8 @@ export function PageFooter( { ...props } ) {
          // height: 400,   
          alignItems: "center",
          // justifyContent: "center",
+         gap: 3,
+         paddingBottom: 36,
       } }>
          <View style={ [s.picture, ] }>
             <Image 
@@ -248,7 +250,7 @@ export function PageFooter( { ...props } ) {
          <View>
             <Text style={ s.p }>Praia Grande - São Paulo - SP - Cep 11702-440</Text>
          </View>
-         <View style={ s.pd }>
+         <View style={ [ s.pd, { gap: 3, } ] }>
             <View>
                <Text style={ [ s.p, s.b, ] }>( 13 ) 99768-5853 </Text>
             </View>

@@ -20,7 +20,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#1b1d22"
-      }
+      },
+      "package": "com.dfellon.rnexpo"
     },
     "web": {
       "bundler": "metro",
@@ -30,15 +31,25 @@
     "plugins": [
       "expo-router",
       [
-         "expo-font",
-         {
-            "fonts": ["./assets/fonts/GodOfThunder.ttf"]
-         }
+        "expo-font",
+        {
+          "fonts": [
+            "./assets/fonts/GodOfThunder.ttf"
+          ]
+        }
       ]
     ],
     "experiments": {
       "baseUrl": "/rn-expo",
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "c7b3c4ca-785a-43aa-a20b-49ac6e4620b8"
+      }
     }
   }
 }
