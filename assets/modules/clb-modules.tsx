@@ -17,8 +17,11 @@ import {
 import { BottomNavigation } from "react-native-paper";
 import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
 
+import Routes from "@/app/pages";
 import Homepage from "../../app/homepage";
 import Customers from "../../app/customers";
+import Index from "@/app";
+import Receipts from "@/app/receipts";
 
 /* == [ AppBar ]
 == == == == == == == == == */
@@ -91,15 +94,21 @@ export function AppBarRight( { ...props } ) {
 /* == [ BottomNavigation ]
 == == == == == == == == == */
 const 
-   HomeRoute = () => <Text>Home</Text>
-   ,
-   CustomersRoute = () => (
-      <Homepage page={ <Customers /> } />
+   HomeRoute = () => (
+      <Homepage page={ <Routes.Home /> } />
    )
    ,
-   RecentsRoute = () => <Text>Recents</Text>
+   CustomersRoute = () => (
+      <Homepage page={ <Routes.Customers /> } />
+   )
    ,
-   NotificationsRoute = () => <Text>Notifications</Text>
+   ReceiptsRoute = () => (
+      <Homepage page={ <Routes.Receipts /> } />
+   )
+   ,
+   BudgetsRoute = () => (
+      <Homepage page={ <Routes.Budgets /> } />
+   )
 ;
 
 export function BottomNavigationBar() {
@@ -108,17 +117,17 @@ export function BottomNavigationBar() {
       ,
       [ routes ] = React.useState( [
          { key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
-         { key: 'customers', title: 'Customers', focusedIcon: 'album' },
-         { key: 'recents', title: 'Recents', focusedIcon: 'history', backgroundColor: "#fc0" },
-         { key: 'notifications', title: 'Notifications', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
+         { key: 'customers', title: 'Clientes', focusedIcon: 'album' },
+         { key: 'receipts', title: 'Recibos', focusedIcon: 'history', backgroundColor: "#fc0" },
+         { key: 'budgets', title: 'Orçamentos', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
       ] )
    ;
 
    const renderScene = BottomNavigation.SceneMap( {
       home: HomeRoute,
       customers: CustomersRoute,
-      recents: RecentsRoute,
-      notifications: NotificationsRoute,
+      receipts: ReceiptsRoute,
+      budgets: BudgetsRoute,
    } );
 
    return( <>

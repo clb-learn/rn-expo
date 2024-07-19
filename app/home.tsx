@@ -16,10 +16,11 @@ import {
 } from "react-native";
 
 
-export default function Index() {
+export default function Home( { ...props } ) {
 
 
    return( <>
-      <BottomNavigationBar />
+      <Text style={ { flex: 1, color: "#fc0", } }>Home</Text>
    </> );
 }
+

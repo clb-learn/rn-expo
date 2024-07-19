@@ -16,10 +16,13 @@ import {
 } from "react-native";
 
 
-export default function Index() {
+export default function Receipts( { ...props } ) {
 
 
    return( <>
-      <BottomNavigationBar />
+      <View style={ { flex: 1, backgroundColor: "#212329", } }>
+         <Text style={ { flex: 1, color: "#fc0", } }>Recibos</Text>
+         {/* <PageFooter /> */}
+      </View>
    </> );
 }
