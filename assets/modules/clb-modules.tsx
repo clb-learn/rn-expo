@@ -216,8 +216,8 @@ export function PageFooter( { ...props } ) {
             aspectRatio: "1 / .5",
             alignItems: "center",
             justifyContent: "center",
-            // marginTop: 36,
-            // marginBottom: 36,
+            marginTop: 36,
+            marginBottom: 36,
          },
       } ) 
    ;
