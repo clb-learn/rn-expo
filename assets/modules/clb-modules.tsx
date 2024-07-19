@@ -11,6 +11,7 @@ import {
    Image,
    Button,
    TouchableOpacity,
+   Linking,
 } from "react-native";
 
 import { Icon } from "../modules/clb-icons";
@@ -34,10 +35,10 @@ export function AppBar( { ...props } ) {
          style={ {
             height: "100%",
             backgroundColor: "#00559C",
-            elevation: 10,
             shadowColor: "#000",
             shadowRadius: 10,
             shadowOpacity: 1,
+            elevation: 10,
             
             borderBottomColor: "#0005",
             
@@ -315,16 +316,16 @@ export function PageFooter( { ...props } ) {
             <Text style={ s.p }>Praia Grande - São Paulo - SP - Cep 11702-440</Text>
          </View>
          <View style={ [ s.pd, { gap: 3, } ] }>
-            <View style={ s.contact }>
+            <View style={ s.contact } onTouchStart={ () => { Linking.openURL( "tel:5513997685853" ) } }>
                <Icon i="mc" name="phone" color="#27f"/>
                <Text style={ [ s.p, s.b, ] }>( 13 ) 99768-5853 </Text>
             </View>
-            <View style={ s.contact }>
+            <View style={ s.contact } onTouchStart={ () => { Linking.openURL( "https://wa.me/5513997685853/?text=%4F%6Cá%20%52%61%66%61%65%6C%21%20%54%75%64%6F%20%62%65%6D%21%3F" ) } }>
                <Icon i="mc" name="whatsapp" color="#0a0"/>
                <Text style={ [ s.p, s.b, ] }>( 13 ) 99768-5853 </Text>
             </View>
          </View>
-         <View style={ s.contact }>
+         <View style={ s.contact } id="v1" onTouchStart={ () => { Linking.openURL( "mailto:rafa.julia.forever@gmail.com" ) } }>
             <Icon i="mc" name="email-seal-outline" color="#f55"/>
             <Text style={ [ s.p, s.b, ] }>rafa.julia.forever@gmail.com</Text>
          </View>

@@ -6,6 +6,7 @@
   "scripts": {
     "build.web": "expo export -p web",
     "deploy.web": "gh-pages -t -d dist",
+    "ceo": "expo export -p web && gh-pages -t -d dist",
     "start": "expo start",
     "reset-project": "node ./scripts/reset-project.js",
     "android": "expo start --android",
