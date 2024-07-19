@@ -70,17 +70,17 @@ export default function RootLayout() {
             name="index"
             options={{
                // headerTitle: "Eletrica & Art",
-               // headerTitle: () => ( <>
-               //    <Image source={ require( "../assets/images/EA/EA-logo-appbar-2.png" ) }
-               //       style={ {
-               //          resizeMode: "contain",
-               //          width: 140,
-               //          height: 56,
-               //          alignSelf: "center",
+               headerTitle: () => ( <>
+                  <Image source={ require( "../assets/images/EA/EA-logo-appbar-2.png" ) }
+                     style={ {
+                        resizeMode: "contain",
+                        width: 140,
+                        height: 56,
+                        alignSelf: "center",
                         
-               //       } }
-               //    />
-               // </> ),
+                     } }
+                  />
+               </> ),
                headerRight: () => (
                   <Text style={ { color: "#fff", } }>🔲</Text>
                   // <Button onPress={() => setCount(c => c + 1)} title="Update count" />
