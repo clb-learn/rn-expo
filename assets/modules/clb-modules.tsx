@@ -13,6 +13,7 @@ import {
    TouchableOpacity,
 } from "react-native";
 
+import { Icon } from "../modules/clb-icons";
 
 import { BottomNavigation } from "react-native-paper";
 import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
@@ -95,7 +96,9 @@ export function AppBarRight( { ...props } ) {
 /* == [ Header ]
 == == == == == == == == == */
 export function Header( { ...props } ) {
-
+   const 
+      child = props.children
+   ;
 
    return( <>
       <View style={ { backgroundColor: "#00338C", 
@@ -105,7 +108,10 @@ export function Header( { ...props } ) {
          <Text style={ { 
             fontSize: 18, color: "#fff",
             fontWeight: "bold",
-         } }>{ props.title }</Text>
+         } }>
+            { props.title }
+            { child }
+         </Text>
       </View>
    </> );
 }
@@ -130,6 +136,10 @@ const
    BudgetsRoute = () => (
       <Homepage page={ <Routes.Budgets /> } />
    )
+   ,
+   DevRoute = () => (
+      <Homepage page={ <Routes.Dev /> } />
+   )
 ;
 
 export function BottomNavigationBar() {
@@ -137,10 +147,16 @@ export function BottomNavigationBar() {
       [ index, setIndex ] = React.useState( 0 )
       ,
       [ routes ] = React.useState( [
-         { key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
-         { key: 'customers', title: 'Clientes', focusedIcon: 'album' },
+         // { key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
+         { 
+            key: 'home', title: 'Home', 
+            focusedIcon: () => ( <Icon i="mc" name="electron-framework" color="#fc0"/> ), 
+            unfocusedIcon: () => ( <Icon i="mi" name="electrical-services" color="#27f"/> ),
+         },
+         { key: 'customers', title: 'Clientes', focusedIcon: 'account-multiple' },
          { key: 'receipts', title: 'Recibos', focusedIcon: 'history', backgroundColor: "#fc0" },
          { key: 'budgets', title: 'Orçamentos', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
+         { key: 'dev', title: 'Dev', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
       ] )
    ;
 
@@ -149,6 +165,7 @@ export function BottomNavigationBar() {
       customers: CustomersRoute,
       receipts: ReceiptsRoute,
       budgets: BudgetsRoute,
+      dev: DevRoute,
    } );
 
    return( <>
