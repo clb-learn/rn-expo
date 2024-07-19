@@ -91,6 +91,27 @@ export function AppBarRight( { ...props } ) {
 
 
 
+
+/* == [ Header ]
+== == == == == == == == == */
+export function Header( { ...props } ) {
+
+
+   return( <>
+      <View style={ { backgroundColor: "#00338C", 
+         paddingTop: 24, paddingBottom: 24, 
+         paddingLeft: 16, paddingRight: 16,
+      } }>
+         <Text style={ { 
+            fontSize: 18, color: "#fff",
+            fontWeight: "bold",
+         } }>{ props.title }</Text>
+      </View>
+   </> );
+}
+
+
+
 /* == [ BottomNavigation ]
 == == == == == == == == == */
 const 
