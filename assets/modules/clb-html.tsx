@@ -138,6 +138,36 @@ export function T( { ...props } ) {
 
 /* == [ box ]
 == == == == == == == == == */
+export const Header = ( { ...props } ) => {
+   const 
+      child = props.children
+      ,
+      s = StyleSheet.create( {
+         view: {
+            paddingTop: 24,
+            paddingBottom: 24,
+         }
+      } )
+      ,
+      bg = props.bg || "transparent"
+   ;
+
+   return( <>
+      <View style={ 
+         [ 
+            s.view
+            ,
+            {
+               backgroundColor: bg
+               ,
+            }
+         ]
+      }>
+         { child }
+      </View>
+   </> );
+}
+
 export const Section = ( { ...props } ) => {
    const 
       child = props.children
@@ -184,6 +214,104 @@ export const Content = ( { ...props } ) => {
             backgroundColor: bg
          } 
       ] }>
+         { child }
+      </View>
+   </> );
+}
+
+
+
+
+
+export const Card = ( { ...props } ) => {
+   const 
+      child = props.children
+      ,
+      s = StyleSheet.create( {
+         view: {}
+      } )
+      ,
+      bg = props.bg || "transparent"
+   ;
+
+   return( <>
+      <View style={ 
+         [ 
+            s.view
+            ,
+            {
+               backgroundColor: bg
+            }
+         ]
+      }>
+         { child }
+      </View>
+   </> );
+}
+
+export const Tiles = ( { ...props } ) => {
+   const 
+      child = props.children
+      ,
+      s = StyleSheet.create( {
+         view: {
+            flexDirection: "row",
+            flexWrap: "wrap",
+            backgroundColor: "#fff0",
+            // gap: 22,
+            rowGap: 24,
+            justifyContent: "space-between",
+            // justifyContent: "center",
+         }
+      } )
+      ,
+      bg = props.bg || "transparent"
+   ;
+
+   return( <>
+      <View style={ 
+         [ 
+            s.view
+            ,
+            {
+               backgroundColor: bg
+            }
+         ]
+      }>
+         { child }
+      </View>
+   </> );
+}
+
+export const Tile = ( { ...props } ) => {
+   const 
+      child = props.children
+      ,
+      s = StyleSheet.create( {
+         view: {
+            flexBasis: "47%",
+            // flex: .47,
+            backgroundColor: "#fff0",
+            borderRadius: 12,
+            borderColor: "#777",
+            elevation: 10,
+            overflow: "hidden",
+         }
+      } )
+      ,
+      bg = props.bg || "transparent"
+   ;
+
+   return( <>
+      <View style={ 
+         [ 
+            s.view
+            ,
+            {
+               backgroundColor: bg
+            }
+         ]
+      }>
          { child }
       </View>
    </> );

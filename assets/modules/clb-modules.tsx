@@ -118,6 +118,32 @@ export function Header( { ...props } ) {
 
 
 
+
+/* == [ EA Card ]
+== == == == == == == == == */
+export function EACard( { ...props } ) {
+   const 
+      child = props.children
+   ;
+
+   return( <>
+      <View style={ { backgroundColor: "#00338C", 
+         paddingTop: 24, paddingBottom: 24, 
+         paddingLeft: 16, paddingRight: 16,
+      } }>
+         <Text style={ { 
+            fontSize: 18, color: "#fff",
+            fontWeight: "bold",
+         } }>
+            { props.title }
+            { child }
+         </Text>
+      </View>
+   </> );
+}
+
+
+
 /* == [ BottomNavigation ]
 == == == == == == == == == */
 const 
@@ -147,16 +173,31 @@ export function BottomNavigationBar() {
       [ index, setIndex ] = React.useState( 0 )
       ,
       [ routes ] = React.useState( [
-         // { key: 'home', title: 'Home', focusedIcon: 'heart', unfocusedIcon: 'heart-outline'},
          { 
             key: 'home', title: 'Home', 
             focusedIcon: () => ( <Icon i="mc" name="electron-framework" color="#fc0"/> ), 
             unfocusedIcon: () => ( <Icon i="mi" name="electrical-services" color="#27f"/> ),
          },
-         { key: 'customers', title: 'Clientes', focusedIcon: 'account-multiple' },
-         { key: 'receipts', title: 'Recibos', focusedIcon: 'history', backgroundColor: "#fc0" },
-         { key: 'budgets', title: 'Orçamentos', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
-         { key: 'dev', title: 'Dev', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
+         { 
+            key: 'customers', title: 'Clientes', 
+            focusedIcon: () => ( <Icon i="f" name="people-group" color="#27f"/> ),  
+            unfocusedIcon: () => ( <Icon i="f" name="people-group" color="#fff"/> ),  
+         },
+         { 
+            key: 'receipts', title: 'Recibos', 
+            focusedIcon: () => ( <Icon i="mc" name="receipt" color="#27f"/> ), 
+            unfocusedIcon: () => ( <Icon i="mc" name="receipt" color="#fff"/> ), 
+         },
+         { 
+            key: 'budgets', title: 'Orçamentos', 
+            focusedIcon: () => ( <Icon i="f" name="file-invoice-dollar" color="#27f"/> ), 
+            unfocusedIcon: () => ( <Icon i="f" name="file-invoice-dollar" color="#fff"/> ), 
+         },
+         { 
+            key: 'dev', title: 'Dev', 
+            focusedIcon: () => ( <Icon i="mi" name="devices" color="#f55"/> ), 
+            unfocusedIcon: () => ( <Icon i="mi" name="devices" color="#ffab00"/> ),
+         },
       ] )
    ;
 
@@ -236,6 +277,12 @@ export function PageFooter( { ...props } ) {
             marginTop: 36,
             marginBottom: 36,
          },
+         contact: {
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            gap: 8,
+         }
       } ) 
    ;
 
@@ -268,15 +315,18 @@ export function PageFooter( { ...props } ) {
             <Text style={ s.p }>Praia Grande - São Paulo - SP - Cep 11702-440</Text>
          </View>
          <View style={ [ s.pd, { gap: 3, } ] }>
-            <View>
+            <View style={ s.contact }>
+               <Icon i="mc" name="phone" color="#27f"/>
                <Text style={ [ s.p, s.b, ] }>( 13 ) 99768-5853 </Text>
             </View>
-            <View>
+            <View style={ s.contact }>
+               <Icon i="mc" name="whatsapp" color="#0a0"/>
                <Text style={ [ s.p, s.b, ] }>( 13 ) 99768-5853 </Text>
             </View>
          </View>
-         <View>
-            <Text style={ [ s.p, s.b, ] }>eletrica.art.ltda@gmail.com</Text>
+         <View style={ s.contact }>
+            <Icon i="mc" name="email-seal-outline" color="#f55"/>
+            <Text style={ [ s.p, s.b, ] }>rafa.julia.forever@gmail.com</Text>
          </View>
       </View>
    </> );
