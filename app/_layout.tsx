@@ -82,11 +82,11 @@ export default function RootLayout() {
                      } }
                   />
                </> ),
-               headerRight: () => (
+               /* headerRight: () => (
                   // <Text style={ { color: "#fff", } }>🔲</Text>
-                  <Icon i="f" name="user-circle" color="#fc0"/>
+                  <Icon i="mc" name="menu" color="#fff"/>
                   // <Button onPress={() => ( console.log( "" ) )} title="" />
-               ),
+               ), */
             }}
          />
          {/* <PageFooter /> */}

@@ -14,11 +14,16 @@ import {
    Linking,
    Platform,
    SafeAreaView,
+   Pressable,
 } from "react-native";
 
 import { Icon } from "../modules/clb-icons";
 
-import { AnimatedFAB, BottomNavigation } from "react-native-paper";
+import { 
+   AnimatedFAB, 
+   BottomNavigation,
+   Drawer as DrawerRNP,
+} from "react-native-paper";
 import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
 
 import Routes from "@/app/pages";
@@ -67,14 +72,9 @@ export function AppBarLeft( { ...props } ) {
 
 
    return( <>
-      <View 
-         style={ {
-            // height: "100%",
-            // backgroundColor: "#672",
-         } }
-      >
-         <Icon i="mc" name="menu" color="#fff"/>
-      </View>
+      <Pressable>
+         <Icon i="f" name="user-circle" color="#fff"/>
+      </Pressable>
    </> );
 } 
 
@@ -82,14 +82,9 @@ export function AppBarRight( { ...props } ) {
 
 
    return( <>
-      <View 
-         style={ {
-            // height: "100%",
-            // backgroundColor: "#454",
-         } }
-      >
-         <Icon i="f" name="user-circle" color="#fff"/>
-      </View>
+      <Pressable>
+         <Icon i="mc" name="dots-vertical" color="#fff"/>
+      </Pressable>
    </> );
 } 
 
@@ -119,6 +114,38 @@ export function Header( { ...props } ) {
    </> );
 }
 
+
+
+/* == [ Drawer ]
+== == == == == == == == == */
+export function Drawer( { ...props } ) {
+   const 
+      [ active, setActive ] = React.useState( "" )
+   ;
+
+   return( <>
+      <DrawerRNP.Section title="Some title"
+         style={{
+            backgroundColor: "#212329",
+            width: "80%",
+            // display: "none",
+            position: "absolute",
+            top: -10,
+         }}
+      >
+         <DrawerRNP.Item
+            label="First Item"
+            active={ active === "first" }
+            onPress={ () => setActive( "first" ) }
+         />
+         <DrawerRNP.Item
+            label="Second Item"
+            active={ active === "second"}
+            onPress={ () => setActive( "second" ) }
+         />
+      </DrawerRNP.Section>
+   </> );
+}
 
 
 
@@ -193,6 +220,60 @@ export function Fab( { ...props } ) {
             style={ [ styles.fabStyle, props.style, fabStyle ] }
          />
    );
+}
+
+
+/* == [ Press ]
+== == == == == == == == == */
+export function Press( { ...props } ) {
+   const 
+      styles = StyleSheet.create( {
+         root: {
+            height: 56,
+            backgroundColor: "#bdcfea", // = #27f3",
+            borderColor: "#fff2",
+            borderWidth: 1,
+            borderStyle: "solid",
+            borderRadius: 16,
+            paddingTop: 16,
+            paddingBottom: 16,
+            paddingLeft: 16,
+            paddingRight: 16,
+            alignItems: "center",
+            justifyContent: "center",
+         },
+         text: {
+            fontSize: 18,
+            fontWeight: "bold",
+            textTransform: "uppercase",
+            color: "#0075BD",
+         },
+      } )
+      ,
+      f = props.f || ( () => console.log( "" ) )
+      ,
+      text = props.text || "Press Me"
+      ,
+      pressedText = props.pressedText || text
+   ;
+
+   return( <>
+      <Pressable
+         onPress={ () => {
+            { f() };
+         } }
+         style={ ({ pressed }) => [
+            {
+               backgroundColor: pressed ? "#27f" : "white",
+            },
+            styles.root,
+         ] }
+      >
+         { ({pressed}) => (
+            <Text style={ styles.text }>{ pressed ? pressedText : text }</Text>
+         ) }
+      </Pressable>
+   </> );
 }
 
 

@@ -6,6 +6,8 @@ import {
    Header,
    PageFooter,
    BottomNavigationBar,
+   Press,
+   Drawer,
 } from "../assets/modules/clb-modules";
 
 // import {
@@ -62,6 +64,24 @@ export default function Dev( { ...props } ) {
          <Text style={ { flex: 1, color: "#fc0", } }>Dev</Text>
          <c.H1 color="#fff">React Native Paper: icon list</c.H1>
       </View>
+
+      <c.Section bg="#e5e5e5">
+         <c.Header>
+            <c.Content>
+               <c.H3 color="#fc0fc0">Press</c.H3>
+            </c.Content>
+         </c.Header>
+         <c.Content>
+            <Press 
+               f={ () => console.log( "oi" ) }
+               text="Open Drawer"
+               pressedText="ok"
+            />
+         </c.Content>
+      </c.Section>
+
+      <Drawer />
+
       <c.Section bg="#212329">
          <c.Section FontAwesome6>
             <c.Content>
