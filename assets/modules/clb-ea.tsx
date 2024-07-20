@@ -12,6 +12,10 @@ import {
    
 } from "react-native";
 
+import {
+   Avatar,
+} from "react-native-paper";
+
 import * as c from "./clb-html";
 
 import { Icon } from "./clb-icons";
@@ -44,10 +48,10 @@ export function UsersCard( { ...props } ) {
                aspectRatio: 1,
                flex: .20,
                // overflow: "hidden",
-               backgroundColor: "#27f",
+               // backgroundColor: "#27f",
             }}>
                {/* <Image source={ require( "../images/Avatar/default_avatar_masc_ico.webp" ) } */}
-               <Image source={ profile }
+               {/* <Image source={ profile }
                   style={{
                      resizeMode: "contain",
                      width: "100%",
@@ -55,7 +59,8 @@ export function UsersCard( { ...props } ) {
                      borderRadius: 100,
                      overflow: "hidden",
                   }}
-               />
+               /> */}
+               <Avatar.Image source={ profile }/>
             </View>
             <View style={{
                justifyContent: "center",

@@ -5,6 +5,7 @@ import React from "react";
 import {
    PageFooter,
    BottomNavigationBar,
+   Fab,
 } from "../assets/modules/clb-modules";
 
 import {
@@ -34,5 +35,6 @@ export default function Homepage( { ...props } ) {
          </ScrollView>
             <PageFooter />
          </ScrollView>
+         <Fab />
    </> );
 }

@@ -12,11 +12,13 @@ import {
    Button,
    TouchableOpacity,
    Linking,
+   Platform,
+   SafeAreaView,
 } from "react-native";
 
 import { Icon } from "../modules/clb-icons";
 
-import { BottomNavigation } from "react-native-paper";
+import { AnimatedFAB, BottomNavigation } from "react-native-paper";
 import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
 
 import Routes from "@/app/pages";
@@ -143,6 +145,55 @@ export function EACard( { ...props } ) {
    </> );
 }
 
+
+
+/* == [ Fab ]
+== == == == == == == == == */
+export function Fab( { ...props } ) {
+   const 
+      [ isExtended, setIsExtended ] = React.useState( false )
+      ,
+      isIOS = Platform.OS === "ios"
+      // ,
+      // onClick = ({ nativeEvent }) => {
+      //    const currentScrollPosition =
+      //       Math.floor( nativeEvent?.contentOffset?.y ) ?? 0
+      //    ;
+
+      //    setIsExtended(currentScrollPosition <= 0);
+      //    setIsExtended( !isExtended );
+      // } 
+      ,
+      styles = StyleSheet.create({
+         container: {
+            flexGrow: 1,
+         },
+         fabStyle: {
+            backgroundColor: "#f55",
+            color: "#fff",
+            bottom: 16,
+            right: 16,
+            position: "absolute",
+         },
+      })
+      ,
+      fabStyle = { [ props.animateFrom ]: 16 }
+   ;
+
+   return (
+         <AnimatedFAB
+            icon={ props.icon || "plus" }
+            label={ props.label || "Options" }
+            // extended={ isExtended }
+            extended={ isExtended }
+            onPress={ () => setIsExtended( !isExtended ) }
+            visible={ props.visible || "visible" }
+            animateFrom={ props.animateFrom || "right" }
+            iconMode={ props.iconMode || "static" }
+            style={ [ styles.fabStyle, props.style, fabStyle ] }
+         />
+   );
+}
 
 
 /* == [ BottomNavigation ]

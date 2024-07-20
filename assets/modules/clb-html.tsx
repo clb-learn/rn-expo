@@ -160,7 +160,8 @@ export const Header = ( { ...props } ) => {
             {
                backgroundColor: bg
                ,
-            }
+            },
+            props.style,
          ]
       }>
          { child }
@@ -186,7 +187,8 @@ export const Section = ( { ...props } ) => {
             ,
             {
                backgroundColor: bg
-            }
+            },
+            props.style,
          ]
       }>
          { child }
@@ -213,8 +215,10 @@ export const Content = ( { ...props } ) => {
       <View style={ [ 
          s.view, 
          {
-            backgroundColor: bg
-         } 
+            backgroundColor: bg,
+            gap: gap,
+         },
+         props.style,
       ] }>
          { child }
       </View>

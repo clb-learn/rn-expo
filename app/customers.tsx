@@ -5,6 +5,7 @@ import React from "react";
 import {
    PageFooter,
    BottomNavigationBar,
+   Fab,
 } from "../assets/modules/clb-modules";
 
 import * as c from "../assets/modules/clb-html";
@@ -27,10 +28,12 @@ export default function Customers( { ...props } ) {
    return( <>
       <c.Section>
          <c.Header>
-            <c.H2>Clientes</c.H2>
+            <c.Content>
+               <c.H2>Clientes</c.H2>
+            </c.Content>
          </c.Header>
          <c.Section>
-            <c.Content gap={ 16 }>
+            <c.Content gap={ 8 }>
                <ea.UsersCard 
                   name="Noely Oliveira Gangello"
                />
