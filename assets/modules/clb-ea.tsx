@@ -18,6 +18,15 @@ import { Icon } from "./clb-icons";
 
 
 export function UsersCard( { ...props } ) {
+   const 
+      child = props.children 
+      ,
+      profile = props.profile || require( "../images/Avatar/default_avatar_masc_ico.webp" )
+      ,
+      name = props.name || "Nome do Cliente"
+      ,
+      tel = props.tel || "(13) 99148-6078"
+   ;
 
    return( <>
       <View>
@@ -37,7 +46,8 @@ export function UsersCard( { ...props } ) {
                // overflow: "hidden",
                backgroundColor: "#27f",
             }}>
-               <Image source={ require( "../images/Avatar/default_avatar_masc_ico.webp" ) }
+               {/* <Image source={ require( "../images/Avatar/default_avatar_masc_ico.webp" ) } */}
+               <Image source={ profile }
                   style={{
                      resizeMode: "contain",
                      width: "100%",
@@ -47,22 +57,24 @@ export function UsersCard( { ...props } ) {
                   }}
                />
             </View>
-         <View style={{
-            justifyContent: "center",
-            flex: .75,
-            width: 70,
-            paddingLeft: 8,
-            // backgroundColor: "#4565",
-         }}>
-            <c.H4>Anselmo Sammarco Nunes</c.H4>
-            <c.T>(13) 99148-6078</c.T>
-         </View>
-         <View style={{
-            flex: .05,
-            justifyContent: "center",
-         }}>
-            <Icon i="mc" name="dots-vertical" color="#fff"/>
-         </View>
+            <View style={{
+               justifyContent: "center",
+               flex: .75,
+               width: 70,
+               paddingLeft: 16,
+               // backgroundColor: "#4565",
+            }}>
+               {/* <c.H4>Anselmo Sammarco Nunes</c.H4> */}
+               <c.H4>{ name }</c.H4>
+               {/* <c.T>(13) 99148-6078</c.T> */}
+               <c.T>{ tel }</c.T>
+            </View>
+            <View style={{
+               flex: .05,
+               justifyContent: "center",
+            }}>
+               <Icon i="mc" name="dots-vertical" color="#333"/>
+            </View>
          </View>
       </View>
    </> );

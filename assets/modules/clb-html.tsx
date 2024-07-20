@@ -205,6 +205,8 @@ export const Content = ( { ...props } ) => {
       } )
       ,
       bg = props.bg || "transparent"
+      ,
+      gap = props.gap || 0
    ;
 
    return( <>
