@@ -7,6 +7,11 @@ import {
    BottomNavigationBar,
 } from "../assets/modules/clb-modules";
 
+import * as c from "../assets/modules/clb-html";
+import * as ea from "../assets/modules/clb-ea";
+
+import { Icon } from "@/assets/modules/clb-icons";
+
 import {
    StyleSheet,
    ScrollView,
@@ -20,9 +25,15 @@ export default function Customers( { ...props } ) {
 
 
    return( <>
-      <View style={ { flex: 1, backgroundColor: "#212329", } }>
-         <Text style={ { flex: 1, color: "#fc0", } }>Clientes</Text>
-         {/* <PageFooter /> */}
-      </View>
+      <c.Section>
+         <c.Header>
+            <c.H2>Clientes</c.H2>
+         </c.Header>
+         <c.Section>
+            <c.Content>
+               <ea.UsersCard></ea.UsersCard>
+            </c.Content>
+         </c.Section>
+      </c.Section>
    </> );
 }

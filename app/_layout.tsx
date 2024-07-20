@@ -7,6 +7,7 @@ import {
    View,
    Text,
    Image,
+   Button,
 } from "react-native";
 
 import {
@@ -15,9 +16,9 @@ import {
    AppBarRight,
    BottomNavigationBar,
    PageFooter,
-   
 } from "../assets/modules/clb-modules";
 
+import { Icon } from "../assets/modules/clb-icons";
 
 export default function RootLayout() {
    return( <>
@@ -82,8 +83,9 @@ export default function RootLayout() {
                   />
                </> ),
                headerRight: () => (
-                  <Text style={ { color: "#fff", } }>🔲</Text>
-                  // <Button onPress={() => setCount(c => c + 1)} title="Update count" />
+                  // <Text style={ { color: "#fff", } }>🔲</Text>
+                  <Icon i="f" name="user-circle" color="#fc0"/>
+                  // <Button onPress={() => ( console.log( "" ) )} title="" />
                ),
             }}
          />

@@ -1,5 +1,5 @@
 
-
+// http://127.0.0.1:8081
 import HomeScreen from "@/app-example/app/(tabs)";
 import React from "react";
 
@@ -71,7 +71,7 @@ export function AppBarLeft( { ...props } ) {
             // backgroundColor: "#672",
          } }
       >
-         <Text style={ { color: "#fff", } }>🔲</Text>
+         <Icon i="mc" name="menu" color="#fff"/>
       </View>
    </> );
 } 
@@ -86,7 +86,7 @@ export function AppBarRight( { ...props } ) {
             // backgroundColor: "#454",
          } }
       >
-         <Text style={ { color: "#fff", } }>🔲</Text>
+         <Icon i="f" name="user-circle" color="#fff"/>
       </View>
    </> );
 } 
