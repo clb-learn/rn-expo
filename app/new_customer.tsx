@@ -63,28 +63,51 @@ export default function NewCustomer( { ...props } ) {
       [ Note, setNote ] = useState( "" )
    ;
 
-   function GetData() {
-      const 
-         data = {
-            Name: Name,
-            Cellphone: Cellphone,
-            Whatsapp: Whatsapp,
-            Phone: Phone,
-            Phone2: Phone2,
-            Email: Email,
-            Rg: Rg,
-            Cpf: Cpf,
-            Cep: Cep,
-            Estate: Estate,
-            Street: Street,
-            Number: Number,
-            Complemento: Complemento,
-            District: District,
-            City: City,
-            Note: Note 
+   async function GetNSaveData() {
+      try {
+         const 
+            data = {
+               Name: Name,
+               Cellphone: Cellphone,
+               Whatsapp: Whatsapp,
+               Phone: Phone,
+               Phone2: Phone2,
+               Email: Email,
+               Rg: Rg,
+               Cpf: Cpf,
+               Cep: Cep,
+               Estate: Estate,
+               Street: Street,
+               Number: Number,
+               Complemento: Complemento,
+               District: District,
+               City: City,
+               Note: Note 
+            }
+         ;
+
+         await EncryptedStorage.setItem(
+            "customer_dbs",
+            JSON.stringify( data )
+         );
+         console.log( data ); 
+      } catch( err ) {
+         console.log( "customer_dbs err: ", err );
+      }
+   }
+
+   async function GetDta() {
+      try {
+         const 
+            data = await EncryptedStorage.getItem( "customer_dbs" )
+         ;
+
+         if( data !== undefined ) {
+            console.log( "Congrats! here is your prize: ", data );
          }
-      ;
-      console.log( data ); 
+      } catch( err ) {
+         console.log( "GetData err: ", err );
+      }
    }
    
    return( <>
@@ -252,8 +275,12 @@ export default function NewCustomer( { ...props } ) {
                      } }>
                         <Press text="apagar tudo" />
                         <Press text="cadastrar" bg="#00559c" color="#fff"
-                           onPress={ () => { GetData() } }
+                           onPress={ () => { GetNSaveData() } }
                         />
+                     </c.Section>
+
+                     <c.Section bg="#1b1d22">
+                        <Press  text="getDbs" onPress={ () => { GetData() } } />
                      </c.Section>
                   </View>
 
