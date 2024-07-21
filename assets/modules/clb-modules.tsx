@@ -56,10 +56,10 @@ export function AppBar( { ...props } ) {
          <View style={ {
             backgroundColor: "#00559C",
             height: 60,
-            shadowColor: "#000",
-            shadowRadius: 10,
-            shadowOpacity: 1,
-            elevation: 10,
+            // shadowColor: "#000",
+            // shadowRadius: 10,
+            // shadowOpacity: 1,
+            // elevation: 10,
          } }>
             {/* <Image 
                source={ require( "../images/EA/EA-appbar-logo.png" ) }

@@ -58,21 +58,21 @@ export default function RootLayout() {
                title: "Eletrica & Art"
                // ,
                // headerBlurEffect: "light"
-               ,
-               headerShadowVisible: true
-               ,
-               headerShown: true
-               ,
-               headerSearchBarOptions: {
-                  barTintColor: "#fff0",
-                  tintColor: "#fff",
-                  headerIconColor: "#fff",
-                  hintTextColor: "#eee",
-                  textColor: "#eee",
-                  
-               }
-               ,
-               navigationBarColor: "#16181c"
+               // ,
+               // headerShadowVisible: true
+               // ,
+               // headerShown: true
+               // ,
+               // headerSearchBarOptions: {
+               //    barTintColor: "#fff0",
+               //    tintColor: "#fff",
+               //    headerIconColor: "#fff",
+               //    hintTextColor: "#eee",
+               //    textColor: "#eee",
+
+               // }
+               // ,
+               // navigationBarColor: "#16181c"
             }
          }
       >
