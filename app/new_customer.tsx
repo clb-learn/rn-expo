@@ -20,7 +20,8 @@ import {
    Image,
 } from "react-native";
 
-import EncryptedStorage from 'react-native-encrypted-storage';
+import * as CStore from "../assets/modules/clb-dbs";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import {
    Icon,
@@ -61,9 +62,11 @@ export default function NewCustomer( { ...props } ) {
       [ City, setCity ] = useState( "" )
       ,
       [ Note, setNote ] = useState( "" )
+      ,
+      [ DBS, setDBS ] = useState( "" )
    ;
 
-   async function GetNSaveData() {
+   async function GetNSaveData( dbs_name: string) {
       try {
          const 
             data = {
@@ -86,24 +89,27 @@ export default function NewCustomer( { ...props } ) {
             }
          ;
 
-         await EncryptedStorage.setItem(
-            "customer_dbs",
-            JSON.stringify( data )
-         );
-         console.log( data ); 
+         // await EncryptedStorage.setItem(
+         //    "customer_dbs",
+         //    JSON.stringify( data )
+         // );
+
+         await AsyncStorage.setItem( dbs_name, JSON.stringify( data ) );
       } catch( err ) {
-         console.log( "customer_dbs err: ", err );
+         // saving error
       }
    }
 
-   async function GetDta() {
+   async function GetData( dbs_name: string ) {
       try {
          const 
-            data = await EncryptedStorage.getItem( "customer_dbs" )
+            data = await AsyncStorage.getItem( dbs_name );
          ;
 
          if( data !== undefined ) {
             console.log( "Congrats! here is your prize: ", data );
+            // const list = Object.keys()
+            setDBS( JSON.stringify( data ) );
          }
       } catch( err ) {
          console.log( "GetData err: ", err );
@@ -275,16 +281,20 @@ export default function NewCustomer( { ...props } ) {
                      } }>
                         <Press text="apagar tudo" />
                         <Press text="cadastrar" bg="#00559c" color="#fff"
-                           onPress={ () => { GetNSaveData() } }
+                           onPress={ () => { GetNSaveData( "customer_dbs" ) } }
                         />
                      </c.Section>
 
-                     <c.Section bg="#1b1d22">
-                        <Press  text="getDbs" onPress={ () => { GetData() } } />
-                     </c.Section>
-                  </View>
+                     <c.Section bg="#1b1d22" style={ {
+                        padding: 16,
 
-                  
+                     } }>
+                        <Press  text="getDbs" onPress={ () => { GetData( "customer_dbs" ) } } />
+                        
+                        <c.H2 id="target" color="#fc0">oi{ DBS }</c.H2>
+                     </c.Section>
+                     
+                  </View>
                </c.Content>
             </c.Section>
          </c.Section>

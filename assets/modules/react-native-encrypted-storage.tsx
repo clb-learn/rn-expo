@@ -1,9 +1,9 @@
-
+/* 
 
 import EncryptedStorage from "react-native-encrypted-storage";
 
-/* Storing a value
- */
+` == Storing a value
+== == == == == == == == == `;
 async function storeUserSession() {
    try {
       await EncryptedStorage.setItem(
@@ -16,14 +16,14 @@ async function storeUserSession() {
          } )
       );
 
-      // Congrats! You've just stored your first value!
+      "Congrats! You've just stored your first value!";
    } catch( error ) {
-      // There was an error on the native side
+      "There was an error on the native side";
    }
 }
 
-/* Retrieving a value
- */
+`== Retrieving a value
+== == == == == == == == == `;
 async function retrieveUserSession() {
    try {   
       const 
@@ -31,21 +31,22 @@ async function retrieveUserSession() {
       ;
    
       if( session !== undefined ) {
-         // Congrats! You've just retrieved your first value!
+         "Congrats! You've just retrieved your first value!";
       }
    } catch( error ) {
-      // There was an error on the native side
+      "There was an error on the native sid";
    }
 }
 
-/* Removing a value
- */
+`== Removing a value
+== == == == == == == == == `;
 async function removeUserSession() {
    try {
       await EncryptedStorage.removeItem( "user_session" );
-      // Congrats! You've just removed your first value!
+      "Congrats! You've just removed your first value!";
    } catch( error ) {
-      // There was an error on the native side
+      "There was an error on the native side";
    }
 }
 
+ */

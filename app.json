@@ -6,7 +6,6 @@
     "orientation": "portrait",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
-   //  "repo": "github",
     "icon": "./assets/images/EA/globo-de-plasma-300.png",
     "splash": {
       "image": "./assets/images/EA/EA-splash.png",
@@ -37,7 +36,8 @@
             "./assets/fonts/GodOfThunder.ttf"
           ]
         }
-      ]
+      ],
+      "expo-secure-store"
     ],
     "experiments": {
       "baseUrl": "/rn-expo",

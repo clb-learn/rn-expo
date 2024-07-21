@@ -392,6 +392,35 @@
                </li>
 
                <li>
+                  <h4>expo-secure-store</h4>
+                  <ul>
+                     <li>npx expo install expo-secure-store</li>
+                     <li>
+                        <h5>app.json</h5>
+                        <ul>
+                           <li>
+                              <pre>
+   {
+      "expo": {
+         "plugins": [
+            [
+            "expo-secure-store",
+            {
+               "faceIDPermission": "Allow $(PRODUCT_NAME) to access your Face ID biometric data."
+            }
+            ]
+         ]
+      }
+   }
+                                  
+                              </pre>
+                           </li>
+                        </ul>
+                     </li>
+                  </ul>
+               </li>
+
+               <li>
                   <h4>form </h4>
                   <t>npm install react-hook-form</t>
                </li>
