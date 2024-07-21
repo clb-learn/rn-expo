@@ -177,7 +177,10 @@ export const Section = ( { ...props } ) => {
          view: {}
       } )
       ,
-      bg = props.bg || "transparent"
+      bg = props.bg || "transparent",
+      gap = props.gap || 0,
+      mg = props.mg || 0,
+      pd = props.pd || 0
    ;
 
    return( <>
@@ -186,7 +189,9 @@ export const Section = ( { ...props } ) => {
             s.view
             ,
             {
-               backgroundColor: bg
+               backgroundColor: bg,
+               gap: gap,
+               mg: mg,
             },
             props.style,
          ]

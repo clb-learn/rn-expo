@@ -32,31 +32,34 @@ import {
    // Drawer as DrawerRNP,
 } from "react-native-paper";
 
-import Routes from "@/app/pages";
+import Routes from "@/app/routes";
 import Homepage from "../../app/homepage";
 
 /* == [ AppBar ]
 == == == == == == == == == */
 export function AppBar( { ...props } ) {
 
-
    return( <>
       <View 
          style={ {
-            height: "100%",
+            // height: 5,
             backgroundColor: "#00559C",
-            shadowColor: "#000",
-            shadowRadius: 10,
-            shadowOpacity: 1,
+            // shadowColor: "#000",
+            // shadowRadius: 10,
+            // shadowOpacity: 1,
             elevation: 10,
-            
+            borderColor: "#ff0",
             borderBottomColor: "#0005",
-            
+            zIndex: 9,
          } }
       >
          <View style={ {
             backgroundColor: "#00559C",
-            height: 80,
+            height: 60,
+            shadowColor: "#000",
+            shadowRadius: 10,
+            shadowOpacity: 1,
+            elevation: 10,
          } }>
             {/* <Image 
                source={ require( "../images/EA/EA-appbar-logo.png" ) }
@@ -271,8 +274,8 @@ export function Press( { ...props } ) {
             color: "#0075BD",
          },
       } )
-      ,
-      f = props.f || ( () => console.log( "" ) )
+      // ,
+      // f = props.f || ( () => console.log( "" ) )
       ,
       text = props.text || "Press Me"
       ,
@@ -281,9 +284,11 @@ export function Press( { ...props } ) {
 
    return( <>
       <Pressable
-         onPress={ () => {
-            { f() };
-         } }
+         // onPress={ () => {
+         //    { f() };
+         // } }
+         { ...props }
+         onPress={ props.onPress }
          style={ ({ pressed }) => [
             {
                backgroundColor: pressed ? "#27f" : "white",
@@ -321,6 +326,10 @@ const
    DevRoute = () => (
       <Homepage page={ <Routes.Dev /> } />
    )
+   ,
+   NewCustomerRoute = () => (
+      <Homepage page={ <Routes.NewCustomer /> } />
+   )
 ;
 
 export function BottomNavigationBar() {
@@ -353,6 +362,11 @@ export function BottomNavigationBar() {
             focusedIcon: () => ( <Icon i="mi" name="devices" color="#f55"/> ), 
             unfocusedIcon: () => ( <Icon i="mi" name="devices" color="#ffab00"/> ),
          },
+         { 
+            key: 'NewCustomer', title: 'Cadastrar Cliente', 
+            focusedIcon: () => ( <Icon i="mi" name="people" color="#f55"/> ), 
+            unfocusedIcon: () => ( <Icon i="mi" name="people" color="#ffab00"/> ),
+         },
       ] )
    ;
 
@@ -362,6 +376,7 @@ export function BottomNavigationBar() {
       receipts: ReceiptsRoute,
       budgets: BudgetsRoute,
       dev: DevRoute,
+      NewCustomer: NewCustomerRoute,
    } );
 
    return( <>

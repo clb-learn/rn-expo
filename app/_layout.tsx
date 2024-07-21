@@ -50,12 +50,22 @@ export default function RootLayout() {
                }
                ,
                headerStyle: {
-               backgroundColor: "#00559C" 
+                  backgroundColor: "#00559C",
                }
                ,
                statusBarColor: "#00559C"
                ,
                title: "Eletrica & Art"
+               // ,
+               // headerBlurEffect: "light"
+               ,
+               headerShadowVisible: true
+               ,
+               headerShown: true
+               ,
+               headerSearchBarOptions: true
+               ,
+               navigationBarColor: "#16181c"
             }
          }
       >
@@ -76,9 +86,8 @@ export default function RootLayout() {
                      style={ {
                         resizeMode: "contain",
                         width: 140,
-                        height: 56,
+                        height: 60,
                         alignSelf: "center",
-                        
                      } }
                   />
                </> ),
@@ -89,8 +98,7 @@ export default function RootLayout() {
                ), */
             }}
          />
-         {/* <PageFooter /> */}
-         {/* <BottomNavigationBar /> */}
       </Stack>
    </> );
 }
+

@@ -6,21 +6,22 @@ import {
    Header,
    PageFooter,
    BottomNavigationBar,
-} from "../assets/modules/clb-modules";
+} from "../../assets/modules/clb-modules";
 
 import {
    StyleSheet,
    ScrollView,
    View,
    Text,
+   TextInput,
    Image,
 } from "react-native";
 
 import {
    Icon,
-} from "../assets/modules/clb-icons";
+} from "../../assets/modules/clb-icons";
 
-import * as c from "../assets/modules/clb-html";
+import * as c from "../../assets/modules/clb-html";
 
 
 export default function Home( { ...props } ) {
@@ -32,7 +33,7 @@ export default function Home( { ...props } ) {
             <c.H2 color="#00559C">Home</c.H2>
          </c.Content>
       </c.Header>
-      <c.Section bg="#f5f5f5">
+      <c.Section bg="#f5f5f5" style={ { minHeight: 650 } }>
          <c.Content>
             <c.Tiles style={{ flexDirection: "row", justifyContent: "space-between" }}>
 

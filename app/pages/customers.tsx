@@ -6,10 +6,10 @@ import {
    PageFooter,
    BottomNavigationBar,
    Fab,
-} from "../assets/modules/clb-modules";
+} from "../../assets/modules/clb-modules";
 
-import * as c from "../assets/modules/clb-html";
-import * as ea from "../assets/modules/clb-ea";
+import * as c from "../../assets/modules/clb-html";
+import * as ea from "../../assets/modules/clb-ea";
 
 import { Icon } from "@/assets/modules/clb-icons";
 

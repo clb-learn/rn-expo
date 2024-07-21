@@ -1,0 +1,5 @@
+* root
+  remotes/origin/dev
+  remotes/origin/gh-pages
+  remotes/origin/root
+[34mBranch trees [0m

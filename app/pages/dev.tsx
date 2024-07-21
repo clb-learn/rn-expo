@@ -8,14 +8,14 @@ import {
    BottomNavigationBar,
    Press,
    Drawer,
-} from "../assets/modules/clb-modules";
+} from "../../assets/modules/clb-modules";
 
 // import {
 //    H1,
 //    Section,
 //    Content,
 // } from "../assets/modules/clb-html";
-import * as c from "../assets/modules/clb-html";
+import * as c from "../../assets/modules/clb-html";
 // import * as א from "../assets/modules/clb-html";
 /*
 https://symbc.cc/en/unicode-table/#arabic
@@ -40,7 +40,7 @@ import {
 
 import {
    Icon,
-} from "../assets/modules/clb-icons";
+} from "../../assets/modules/clb-icons";
 
 
 
@@ -73,7 +73,7 @@ export default function Dev( { ...props } ) {
          </c.Header>
          <c.Content>
             <Press 
-               f={ () => console.log( "oi" ) }
+               onPress={ () => console.log( "oi" ) }
                text="Open Drawer"
                pressedText="ok"
             />
