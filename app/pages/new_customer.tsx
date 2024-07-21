@@ -8,6 +8,7 @@ import {
    Header,
    PageFooter,
    BottomNavigationBar,
+   Press,
 } from "../../assets/modules/clb-modules";
 
 import {
@@ -28,16 +29,69 @@ import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function NewCustomer( { ...props } ) {
    const 
-      [ name, setName ] = useState( "" )
+      [ Name, setName ] = useState( "" )
+      ,
+      [ Cellphone, setCellphone ] = useState( "" )
+      ,
+      [ Whatsapp, setWhatsapp ] = useState( "" )
+      ,
+      [ Phone, setPhone ] = useState( "" )
+      ,
+      [ Phone2, setPhone2 ] = useState( "" )
+      ,
+      [ Email, setEmail ] = useState( "" )
+      ,
+      [ Rg, setRg ] = useState( "" )
+      ,
+      [ Cpf, setCpf ] = useState( "" )
+      ,
+      [ Cep, setCep ] = useState( "" )
+      ,
+      [ Estate, setEstate ] = useState( "" )
+      ,
+      [ Street, setStreet ] = useState( "" )
+      ,
+      [ Number, setNumber ] = useState( "" )
+      ,
+      [ Complemento, setComplemento ] = useState( "" )
+      ,
+      [ District, setDistrict ] = useState( "" )
+      ,
+      [ City, setCity ] = useState( "" )
+      ,
+      [ Note, setNote ] = useState( "" )
    ;
 
-
+   function GetData() {
+      const 
+         data = {
+            Name: Name,
+            Cellphone: Cellphone,
+            Whatsapp: Whatsapp,
+            Phone: Phone,
+            Phone2: Phone2,
+            Email: Email,
+            Rg: Rg,
+            Cpf: Cpf,
+            Cep: Cep,
+            Estate: Estate,
+            Street: Street,
+            Number: Number,
+            Complemento: Complemento,
+            District: District,
+            City: City,
+            Note: Note 
+         }
+      ;
+      console.log( data ); 
+   }
+   
    return( <>
       <SafeAreaView>
          <c.Section bg="#f3f3f3">
             <c.Header>
                <c.Content>
-                  <c.H3 color="#00559c99">Cadastrar um novo cliente</c.H3>
+                  <c.H3 color="#00559c99">Cadastrar cliente</c.H3>
                </c.Content>
             </c.Header>
             <c.Section bg="#fff" style={{ borderRadius: 24 }}>
@@ -49,9 +103,9 @@ export default function NewCustomer( { ...props } ) {
                      </c.Section>
 
                      <c.Section cliente section>
-                        <Text style={ s.label }>Nome do Cliente { name }</Text>
+                        <Text style={ s.label }>Nome do Cliente { Name }</Text>
                         <TextInput style={ s.input }
-                           value={ name }
+                           value={ Name }
                            onChangeText={ setName }
                         />
                      </c.Section>
@@ -63,39 +117,60 @@ export default function NewCustomer( { ...props } ) {
                         <View style={ s.duo }>
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>Celular</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Cellphone }
+                           onChangeText={ setCellphone }
+                        />
                            </View>
                            
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>WhatsApp</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Whatsapp }
+                           onChangeText={ setWhatsapp }
+                        />
                            </View>
                         </View>
                         
                         <View style={ [ s.duo, {  } ] }>
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>Telefone</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Phone }
+                           onChangeText={ setPhone }
+                        />
                            </View>
                            
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>Telefone 2</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Phone2 }
+                           onChangeText={ setPhone2 }
+                        />
                            </View>
                         </View>
                         
                         <Text style={ s.label }>Email</Text>
-                        <TextInput style={ s.input }/>
+                        <TextInput style={ s.input }
+                           value={ Email }
+                           onChangeText={ setEmail }
+                        />
                         
                         <View style={ [ s.duo, {  } ] }>
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>RG/IE</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Rg }
+                           onChangeText={ setRg }
+                        />
                            </View>
                            
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>CPF</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Cpf }
+                           onChangeText={ setCpf }
+                        />
                            </View>
                         </View>
                      </c.Section>
@@ -108,35 +183,56 @@ export default function NewCustomer( { ...props } ) {
                         <View style={ [ s.duo, {  } ] }>
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>CEP</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Cep }
+                           onChangeText={ setCep }
+                        />
                            </View>
                            
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>UF</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Estate }
+                           onChangeText={ setEstate }
+                        />
                            </View>
                         </View>
                         
                         <Text style={ s.label }>Rua</Text>
-                        <TextInput style={ s.input }/>
+                        <TextInput style={ s.input }
+                           value={ Street }
+                           onChangeText={ setStreet }
+                        />
                         
                         <View style={ [ s.duo, {  } ] }>
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>Número</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Number }
+                           onChangeText={ setNumber }
+                        />
                            </View>
                            
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>Complemento</Text>
-                              <TextInput style={ s.input }/>
+                              <TextInput style={ s.input }
+                           value={ Complemento }
+                           onChangeText={ setComplemento }
+                        />
                            </View>
                         </View>
                         
                         <Text style={ s.label }>Bairro</Text>
-                        <TextInput style={ s.input }/>
+                        <TextInput style={ s.input }
+                           value={ District }
+                           onChangeText={ setDistrict }
+                        />
                         
                         <Text style={ s.label }>Cidade</Text>
-                        <TextInput style={ s.input }/>
+                        <TextInput style={ s.input }
+                           value={ City }
+                           onChangeText={ setCity }
+                        />
                      </c.Section>
 
                      <c.Section observações section>
@@ -144,10 +240,21 @@ export default function NewCustomer( { ...props } ) {
                            <Text style={ s.dividerText }>OBSERVAÇÕES</Text>
                         </View>
                         <Text style={ s.label }>Observação</Text>
-                        <TextInput style={ s.input }/>
+                        <TextInput style={ s.input }
+                           value={ Note }
+                           onChangeText={ setNote }
+                        />
                      </c.Section>
-
-
+                     <c.Section style={ {
+                        gap: 16,
+                        marginTop: 24,
+                        marginBottom: 66,
+                     } }>
+                        <Press text="apagar tudo" />
+                        <Press text="cadastrar" bg="#00559c" color="#fff"
+                           onPress={ () => { GetData() } }
+                        />
+                     </c.Section>
                   </View>
 
 

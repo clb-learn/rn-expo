@@ -63,7 +63,14 @@ export default function RootLayout() {
                ,
                headerShown: true
                ,
-               headerSearchBarOptions: true
+               headerSearchBarOptions: {
+                  barTintColor: "#fff0",
+                  tintColor: "#fff",
+                  headerIconColor: "#fff",
+                  hintTextColor: "#eee",
+                  textColor: "#eee",
+                  
+               }
                ,
                navigationBarColor: "#16181c"
             }

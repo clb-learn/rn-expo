@@ -252,10 +252,14 @@ export function Fab( { ...props } ) {
 == == == == == == == == == */
 export function Press( { ...props } ) {
    const 
+      bg = props.bg || "#bdcfea"
+      ,
+      color = props.color || "#0075BD"
+      ,
       styles = StyleSheet.create( {
          root: {
             height: 56,
-            backgroundColor: "#bdcfea", // = #27f3",
+            backgroundColor: bg,
             borderColor: "#fff2",
             borderWidth: 1,
             borderStyle: "solid",
@@ -271,7 +275,7 @@ export function Press( { ...props } ) {
             fontSize: 18,
             fontWeight: "bold",
             textTransform: "uppercase",
-            color: "#0075BD",
+            color: color,
          },
       } )
       // ,
