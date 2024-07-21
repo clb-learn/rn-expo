@@ -7,7 +7,7 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "repo": "github",
-    "icon": "./assets/images/EA/globo de plasma - 7.png",
+    "icon": "./assets/images/EA/globo-de-plasma.png",
     "splash": {
       "image": "./assets/images/EA/splash.png",
       "resizeMode": "contain",
@@ -18,7 +18,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/EA/globo de plasma - 7.png",
+        "foregroundImage": "./assets/images/EA/globo-de-plasma.png",
         "backgroundColor": "#1b1d22"
       },
       "package": "com.dfellon.rnexpo"
