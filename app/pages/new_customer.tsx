@@ -25,7 +25,6 @@ import {
 } from "../../assets/modules/clb-icons";
 
 import * as c from "../../assets/modules/clb-html";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function NewCustomer( { ...props } ) {
    const 
@@ -87,7 +86,6 @@ export default function NewCustomer( { ...props } ) {
    }
    
    return( <>
-      <SafeAreaView>
          <c.Section bg="#f3f3f3">
             <c.Header>
                <c.Content>
@@ -257,45 +255,10 @@ export default function NewCustomer( { ...props } ) {
                      </c.Section>
                   </View>
 
-
-                 {/*  <Text style={ styles.label }>First name</Text>
-                  <Controller
-                  control={ control }
-                     render={ ( { field: { onChange, onBlur, value } } ) => (
-                        <TextInput
-                           style={ styles.input }
-                           onBlur={ onBlur }
-                           onChangeText={ value => onChange( value ) }
-                           value={ value }
-                        />
-                     )}
-                     name="firstName"
-                     rules={ { required: true } }
-                  />
-                  <Text style={ styles.label }>Last name</Text>
-                  <Controller
-                     control={ control }
-                     render={ ( { field: { onChange, onBlur, value } } ) => (
-                        <TextInput
-                           style={ styles.input }
-                           onBlur={ onBlur }
-                           onChangeText={ value => onChange( value ) }
-                           value={ value }
-                        />
-                     ) }
-                     name="lastName"
-                     rules={ { required: true } }
-                  />
-
-                  <c.Section gap={ 24 } style={ { marginTop: 24, } }>
-                     <Press text="Reset" onPress={ () => reset( { firstName: "Céo", lastName: "Sammarco" } ) }/>
-                     <Press text="Submit" onPress={ handleSubmit( onSubmit ) } />
-                  </c.Section> */}
                   
                </c.Content>
             </c.Section>
          </c.Section>
-      </SafeAreaView>
    </> );
 }
 
