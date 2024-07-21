@@ -1,12 +1,12 @@
 {
   "expo": {
-    "name": "rn-expo",
+    "name": "rn expo",
     "slug": "rn-expo",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "orientation": "portrait",
-    "scheme": "myapp",
+    "scheme": "com.dfellon.rn-expo",
     "userInterfaceStyle": "automatic",
-    "repo": "github",
+   //  "repo": "github",
     "icon": "./assets/images/EA/globo-de-plasma.png",
     "splash": {
       "image": "./assets/images/EA/splash.png",
