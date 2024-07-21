@@ -20,6 +20,8 @@ import {
    Image,
 } from "react-native";
 
+import EncryptedStorage from 'react-native-encrypted-storage';
+
 import {
    Icon,
 } from "../assets/modules/clb-icons";
