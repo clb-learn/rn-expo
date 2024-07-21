@@ -95,6 +95,7 @@ export default function RootLayout() {
                         width: 140,
                         height: 60,
                         alignSelf: "center",
+                        
                      } }
                   />
                </> ),
@@ -108,4 +109,3 @@ export default function RootLayout() {
       </Stack>
    </> );
 }
-

@@ -29,7 +29,7 @@ export default function Homepage( { ...props } ) {
 
 
    return( <>
-         <ScrollView style={{ flex: 1,  }} >
+         <ScrollView style={{ flex: 1,  }} justifyContent="space-between">
          <ScrollView style={{ flex: 1,  }}>
             { props.page }
          </ScrollView>

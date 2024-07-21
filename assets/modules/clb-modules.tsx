@@ -17,27 +17,25 @@ import {
    Pressable,
 } from "react-native";
 
-import { 
-   GestureHandlerRootView,
-} from "react-native-gesture-handler";
-import { 
-   Drawer as DrawerExpo,
-} from "expo-router/drawer";
-
 import { Icon } from "../modules/clb-icons";
 
 import { 
    AnimatedFAB, 
    BottomNavigation,
-   // Drawer as DrawerRNP,
+   Drawer as DrawerRNP,
 } from "react-native-paper";
+import { createMaterialBottomTabNavigator } from "react-native-paper/react-navigation";
 
-import Routes from "@/app/routes";
+import Routes from "@/app/pages";
 import Homepage from "../../app/homepage";
+import Customers from "../../app/customers";
+import Index from "@/app";
+import Receipts from "@/app/receipts";
 
 /* == [ AppBar ]
 == == == == == == == == == */
 export function AppBar( { ...props } ) {
+
 
    return( <>
       <View 
@@ -130,30 +128,11 @@ export function Drawer( { ...props } ) {
    ;
 
    return( <>
-      <DrawerExpo>
-         <DrawerExpo.Screen
-            name="index" // This is the name of the page and must match the url from root
-            options={{
-               drawerLabel: 'Home',
-               title: 'overview',
-            }}
-         />
-         <DrawerExpo.Screen
-            name="user/[id]" // This is the name of the page and must match the url from root
-            options={{
-               drawerLabel: 'User',
-               title: 'overview',
-            }}
-         />
-      </DrawerExpo>
-   </> );
-
-   /* // DrawerRNP
-   return( <> 
       <DrawerRNP.Section title="Some title"
          style={{
             backgroundColor: "#212329",
             width: "80%",
+            // display: "none",
             position: "absolute",
             top: -10,
          }}
@@ -169,7 +148,7 @@ export function Drawer( { ...props } ) {
             onPress={ () => setActive( "second" ) }
          />
       </DrawerRNP.Section>
-   </> ); */
+   </> );
 }
 
 
@@ -367,7 +346,7 @@ export function BottomNavigationBar() {
             unfocusedIcon: () => ( <Icon i="mi" name="devices" color="#ffab00"/> ),
          },
          { 
-            key: 'NewCustomer', title: 'Cadastrar Cliente', 
+            key: 'newCustomer', title: 'Cadastrar Cliente', 
             focusedIcon: () => ( <Icon i="mi" name="people" color="#f55"/> ), 
             unfocusedIcon: () => ( <Icon i="mi" name="people" color="#ffab00"/> ),
          },
@@ -380,7 +359,7 @@ export function BottomNavigationBar() {
       receipts: ReceiptsRoute,
       budgets: BudgetsRoute,
       dev: DevRoute,
-      NewCustomer: NewCustomerRoute,
+      newCustomer: NewCustomerRoute,
    } );
 
    return( <>

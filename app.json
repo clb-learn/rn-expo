@@ -1,25 +1,25 @@
 {
   "expo": {
-    "name": "rn expo",
+    "name": "rn-expo",
     "slug": "rn-expo",
-    "version": "1.1.0",
+    "version": "1.0.0",
     "orientation": "portrait",
-    "scheme": "com.dfellon.rn-expo",
+    "scheme": "myapp",
     "userInterfaceStyle": "automatic",
    //  "repo": "github",
-    "icon": "./assets/images/EA/globo-de-plasma.png",
+    "icon": "./assets/images/EA/globo-de-plasma-300.png",
     "splash": {
-      "image": "./assets/images/EA/splash.png",
+      "image": "./assets/images/EA/EA-splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#00559c"
+      "backgroundColor": "#044a84"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/EA/globo-de-plasma.png",
-        "backgroundColor": "#1b1d22"
+        "foregroundImage": "./assets/images/EA/globo-de-plasma-300.png",
+        "backgroundColor": "#044a84"
       },
       "package": "com.dfellon.rnexpo"
     },
