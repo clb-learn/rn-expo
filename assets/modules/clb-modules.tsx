@@ -291,6 +291,44 @@ export function Press( { ...props } ) {
 
 /* == [ touchableopacity ] 
 == == == == == == == == == */
+export function Touch( { ...props } ) {
+   const 
+      bg = props.bg || "#bdcfea"
+      ,
+      color = props.color || "#0075BD"
+   ;
+   return( <>
+      <TouchableOpacity { ...props } style={ [
+            {
+               height: 56,
+               backgroundColor: bg,
+               borderColor: "#fff2",
+               borderWidth: 1,
+               borderStyle: "solid",
+               borderRadius: 16,
+               paddingTop: 16,
+               paddingBottom: 16,
+               paddingLeft: 16,
+               paddingRight: 16,
+               alignItems: "center",
+               justifyContent: "center",
+            },
+            { ...props.touchSty },
+         ] } >
+         <Text style={ [
+            {
+               fontSize: 18,
+               fontWeight: "bold",
+               textTransform: "uppercase",
+               color: color,
+            },
+            { ...props.txtSty },
+         ] }>
+            { props.txt }
+         </Text>
+      </TouchableOpacity>
+   </> );
+}
 
 
 

@@ -9,6 +9,7 @@ import {
    PageFooter,
    BottomNavigationBar,
    Press,
+   Touch,
 } from "../assets/modules/clb-modules";
 
 import {
@@ -92,31 +93,28 @@ export default function NewCustomer( { ...props } ) {
 
    async function GetNSaveData( dbs_name: string ) {
       try {
-         // Keyboard.dismiss();
-         // setTimeout( async () => {
-            const 
-               data = {
-                  Name: Name,
-                  Cellphone: Cellphone,
-                  Whatsapp: Whatsapp,
-                  Phone: Phone,
-                  Phone2: Phone2,
-                  Email: Email,
-                  Rg: Rg,
-                  Cpf: Cpf,
-                  Cep: Cep,
-                  Estate: Estate,
-                  Street: Street,
-                  Number: Number,
-                  Complemento: Complemento,
-                  District: District,
-                  City: City,
-                  Note: Note 
-               }
-            ;
+         const 
+            data = {
+               Name: Name,
+               Cellphone: Cellphone,
+               Whatsapp: Whatsapp,
+               Phone: Phone,
+               Phone2: Phone2,
+               Email: Email,
+               Rg: Rg,
+               Cpf: Cpf,
+               Cep: Cep,
+               Estate: Estate,
+               Street: Street,
+               Number: Number,
+               Complemento: Complemento,
+               District: District,
+               City: City,
+               Note: Note 
+            }
+         ;
 
-            await AsyncStorage.setItem( dbs_name, JSON.stringify( data ) );
-         // }, 500 );
+         await AsyncStorage.setItem( dbs_name, JSON.stringify( data ) );
       } catch( err ) {
          // saving error
       }
@@ -125,12 +123,12 @@ export default function NewCustomer( { ...props } ) {
    async function GetData( dbs_name: string ) {
       try {
          const 
-         data = await AsyncStorage.getItem( dbs_name );
+            data = await AsyncStorage.getItem( dbs_name );
          ;
          
          if( data !== undefined ) {
             console.log( "Congrats! here is your prize: ", data );
-               setDBS( JSON.stringify( data ) );
+            setDBS( JSON.stringify( data ) );
          }
       } catch( err ) {
          console.log( "GetData err: ", err );
@@ -300,26 +298,39 @@ export default function NewCustomer( { ...props } ) {
                         marginTop: 24,
                         marginBottom: 66,
                      } }>
-                        <Press text="apagar tudo" 
+
+                        <Touch 
+                           txt="apagar tudo"
                            onPressIn={ () => { Keyboard.dismiss() } }
                            onPressOut={ () => { Form.ClearInputs( inputs ) } }
                         />
-                        <Press text="cadastrar" bg="#00559c" color="#fff"
-                           onPressIn={ () => { Keyboard.dismiss() } }
+                        <Touch 
+                           touchSty={{
+                              backgroundColor: "#00559C",
+                           }}
+                           txtSty={{
+                              color: "#fff",
+                           }}
+                           txt="cadastrar"
                            onPress={ () => { GetNSaveData( "customer_dbs" ) } }
                         />
-                     </c.Section>
 
-                     <TouchableOpacity style={{}} 
-                        onPress={ () => { Form.ClearInputs( inputs ) } }
-                     >
-                        <Text>Press Here</Text>
-                     </TouchableOpacity>
+                     </c.Section>
+                     <Touch 
+                        touchSty={{
+                           backgroundColor: "#00559C",
+                        }}
+                        txtSty={{
+                           color: "#fff",
+                        }}
+                        txt="getDbs"
+                        onPress={ () => { GetData( "customer_dbs" ) }}
+                     />
+
                      <c.Section bg="#1b1d22" style={ {
                         padding: 16,
 
                      } }>
-                        <Press  text="getDbs" onPress={ () => { GetData( "customer_dbs" ) } } />
                         
                         <c.H2 id="target" color="#fc0">oi{ DBS }</c.H2>
                      </c.Section>
