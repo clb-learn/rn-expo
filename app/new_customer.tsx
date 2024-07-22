@@ -95,22 +95,38 @@ export default function NewCustomer( { ...props } ) {
       try {
          const 
             data = {
-               Name: Name,
-               Cellphone: Cellphone,
-               Whatsapp: Whatsapp,
-               Phone: Phone,
-               Phone2: Phone2,
-               Email: Email,
-               Rg: Rg,
-               Cpf: Cpf,
-               Cep: Cep,
-               Estate: Estate,
-               Street: Street,
-               Number: Number,
-               Complemento: Complemento,
-               District: District,
-               City: City,
-               Note: Note 
+         //       Name: Name,
+         //       Cellphone: Cellphone,
+         //       Whatsapp: Whatsapp,
+         //       Phone: Phone,
+         //       Phone2: Phone2,
+         //       Email: Email,
+         //       Rg: Rg,
+         //       Cpf: Cpf,
+         //       Cep: Cep,
+         //       Estate: Estate,
+         //       Street: Street,
+         //       Number: Number,
+         //       Complemento: Complemento,
+         //       District: District,
+         //       City: City,
+         //       Note: Note 
+               Name,
+               Cellphone,
+               Whatsapp,
+               Phone,
+               Phone2,
+               Email,
+               Rg,
+               Cpf,
+               Cep,
+               Estate,
+               Street,
+               Number,
+               Complemento,
+               District,
+               City,
+               Note 
             }
          ;
          let    
@@ -118,14 +134,18 @@ export default function NewCustomer( { ...props } ) {
          ;
 
          if( await AsyncStorage.getItem( dbs_name ) ) {
+            
             const 
-               pureDT: string = await AsyncStorage.getItem( dbs_name )
+               jsonValue = await AsyncStorage.getItem( dbs_name )
                ,
-               tDT = await JSON.parse( pureDT )
+               dataList = jsonValue != null ? JSON.parse( jsonValue ) : null
             ;
 
-            tDT.push( data );
-            tempDBs = [ ... tDT ];   
+            tempDBs = [
+               ...await dataList
+            ];
+            console.log( "\n\n\n====================\ntempDBs: ", tempDBs );
+
          }
 
          await AsyncStorage.setItem( dbs_name, JSON.stringify( data ) );
