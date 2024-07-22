@@ -272,6 +272,8 @@ export function Press( { ...props } ) {
          // } }
          { ...props }
          onPress={ props.onPress }
+         onPressIn={ props.onPressIn }
+         onPressOut={ props.onPressOut }
          style={ ({ pressed }) => [
             {
                backgroundColor: pressed ? "#27f" : "white",
@@ -285,6 +287,11 @@ export function Press( { ...props } ) {
       </Pressable>
    </> );
 }
+
+
+/* == [ touchableopacity ] 
+== == == == == == == == == */
+
 
 
 /* == [ BottomNavigation ]

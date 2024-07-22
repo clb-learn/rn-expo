@@ -18,8 +18,11 @@ import {
    Text,
    TextInput,
    Image,
+   TouchableOpacity,
+   Keyboard,
 } from "react-native";
 
+import * as Form from "../assets/modules/clb-form";
 import * as CStore from "../assets/modules/clb-dbs";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
@@ -66,35 +69,54 @@ export default function NewCustomer( { ...props } ) {
       [ DBS, setDBS ] = useState( "" )
    ;
 
-   async function GetNSaveData( dbs_name: string) {
+   const 
+      inputs = [
+         setName,
+         setCellphone,
+         setWhatsapp,
+         setPhone,
+         setPhone2,
+         setEmail,
+         setRg,
+         setCpf,
+         setCep,
+         setEstate,
+         setStreet,
+         setNumber,
+         setComplemento,
+         setDistrict,
+         setCity,
+         setNote
+      ]
+   ;
+
+   async function GetNSaveData( dbs_name: string ) {
       try {
-         const 
-            data = {
-               Name: Name,
-               Cellphone: Cellphone,
-               Whatsapp: Whatsapp,
-               Phone: Phone,
-               Phone2: Phone2,
-               Email: Email,
-               Rg: Rg,
-               Cpf: Cpf,
-               Cep: Cep,
-               Estate: Estate,
-               Street: Street,
-               Number: Number,
-               Complemento: Complemento,
-               District: District,
-               City: City,
-               Note: Note 
-            }
-         ;
+         // Keyboard.dismiss();
+         // setTimeout( async () => {
+            const 
+               data = {
+                  Name: Name,
+                  Cellphone: Cellphone,
+                  Whatsapp: Whatsapp,
+                  Phone: Phone,
+                  Phone2: Phone2,
+                  Email: Email,
+                  Rg: Rg,
+                  Cpf: Cpf,
+                  Cep: Cep,
+                  Estate: Estate,
+                  Street: Street,
+                  Number: Number,
+                  Complemento: Complemento,
+                  District: District,
+                  City: City,
+                  Note: Note 
+               }
+            ;
 
-         // await EncryptedStorage.setItem(
-         //    "customer_dbs",
-         //    JSON.stringify( data )
-         // );
-
-         await AsyncStorage.setItem( dbs_name, JSON.stringify( data ) );
+            await AsyncStorage.setItem( dbs_name, JSON.stringify( data ) );
+         // }, 500 );
       } catch( err ) {
          // saving error
       }
@@ -103,13 +125,12 @@ export default function NewCustomer( { ...props } ) {
    async function GetData( dbs_name: string ) {
       try {
          const 
-            data = await AsyncStorage.getItem( dbs_name );
+         data = await AsyncStorage.getItem( dbs_name );
          ;
-
+         
          if( data !== undefined ) {
             console.log( "Congrats! here is your prize: ", data );
-            // const list = Object.keys()
-            setDBS( JSON.stringify( data ) );
+               setDBS( JSON.stringify( data ) );
          }
       } catch( err ) {
          console.log( "GetData err: ", err );
@@ -245,9 +266,9 @@ export default function NewCustomer( { ...props } ) {
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>Complemento</Text>
                               <TextInput style={ s.input }
-                           value={ Complemento }
-                           onChangeText={ setComplemento }
-                        />
+                                 value={ Complemento }
+                                 onChangeText={ setComplemento }
+                              />
                            </View>
                         </View>
                         
@@ -279,12 +300,21 @@ export default function NewCustomer( { ...props } ) {
                         marginTop: 24,
                         marginBottom: 66,
                      } }>
-                        <Press text="apagar tudo" />
+                        <Press text="apagar tudo" 
+                           onPressIn={ () => { Keyboard.dismiss() } }
+                           onPressOut={ () => { Form.ClearInputs( inputs ) } }
+                        />
                         <Press text="cadastrar" bg="#00559c" color="#fff"
+                           onPressIn={ () => { Keyboard.dismiss() } }
                            onPress={ () => { GetNSaveData( "customer_dbs" ) } }
                         />
                      </c.Section>
 
+                     <TouchableOpacity style={{}} 
+                        onPress={ () => { Form.ClearInputs( inputs ) } }
+                     >
+                        <Text>Press Here</Text>
+                     </TouchableOpacity>
                      <c.Section bg="#1b1d22" style={ {
                         padding: 16,
 

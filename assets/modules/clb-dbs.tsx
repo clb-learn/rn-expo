@@ -6,7 +6,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 /* Storing string value
  */
-export async function storeStrData( value: string, dbs_name: string ) {
+export async function StoreData( value: string, dbs_name: string ) {
    try {
       await AsyncStorage.setItem( dbs_name, value );
    } catch( err ) {
@@ -17,7 +17,7 @@ export async function storeStrData( value: string, dbs_name: string ) {
 
  /* Storing object value
   */
-export async function storeObjData( dbs_name: string, value: string ) {
+export async function StoreObjData( dbs_name: string, value: string ) {
    try {
       const jsonValue = JSON.stringify( value );
       await AsyncStorage.setItem( dbs_name, jsonValue );
@@ -29,7 +29,7 @@ export async function storeObjData( dbs_name: string, value: string ) {
 
  /* Reading string value
   */
- export async function getStrData( dbs_name: string ) {
+ export async function GetData( dbs_name: string ) {
    try {
       const value = await AsyncStorage.getItem( dbs_name );
       if( value !== null ) {
@@ -43,7 +43,7 @@ export async function storeObjData( dbs_name: string, value: string ) {
 
  /* Reading object value
   */
-export async function getObjData( dbs_name: string ) {
+export async function GetObjData( dbs_name: string ) {
    try {
       const jsonValue = await AsyncStorage.getItem( dbs_name );
       return jsonValue != null ? JSON.parse( jsonValue ) : null;
