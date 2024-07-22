@@ -91,70 +91,129 @@ export default function NewCustomer( { ...props } ) {
       ]
    ;
 
-   async function GetNSaveData( dbs_name: string ) {
+   /* async function GetNSaveData( dbs_name ) {
+      let customers = [];
       try {
+         if( await AsyncStorage.getItem( dbs_name ) ) {
          const 
             data = {
-         //       Name: Name,
-         //       Cellphone: Cellphone,
-         //       Whatsapp: Whatsapp,
-         //       Phone: Phone,
-         //       Phone2: Phone2,
-         //       Email: Email,
-         //       Rg: Rg,
-         //       Cpf: Cpf,
-         //       Cep: Cep,
-         //       Estate: Estate,
-         //       Street: Street,
-         //       Number: Number,
-         //       Complemento: Complemento,
-         //       District: District,
-         //       City: City,
-         //       Note: Note 
-               Name,
-               Cellphone,
-               Whatsapp,
-               Phone,
-               Phone2,
-               Email,
-               Rg,
-               Cpf,
-               Cep,
-               Estate,
-               Street,
-               Number,
-               Complemento,
-               District,
-               City,
-               Note 
+               Name: Name,
+               Cellphone: Cellphone,
+               Whatsapp: Whatsapp,
+               Phone: Phone,
+               Phone2: Phone2,
+               Email: Email,
+               Rg: Rg,
+               Cpf: Cpf,
+               Cep: Cep,
+               Estate: Estate,
+               Street: Street,
+               Number: Number,
+               Complemento: Complemento,
+               District: District,
+               City: City,
+               Note: Note 
             }
-         ;
-         let    
-            tempDBs: any[] = []
-         ;
-
-         if( await AsyncStorage.getItem( dbs_name ) ) {
-            
-            const 
-               jsonValue = await AsyncStorage.getItem( dbs_name )
-               ,
-               dataList = jsonValue != null ? JSON.parse( jsonValue ) : null
-            ;
-
+            ,
+            jsonValue = await AsyncStorage.getItem( dbs_name )
+            ,
+            dataList = jsonValue != null ? JSON.parse( jsonValue ) : null
+            ,
             tempDBs = [
                ...await dataList
-            ];
-            console.log( "\n\n\n====================\ntempDBs: ", tempDBs );
+            ]
+         ;
 
+         tempDBs.push( data );
+         
+            console.log( "if( await AsyncStorage.getItem( dbs_name ) ) { data: ", data );
          }
 
-         await AsyncStorage.setItem( dbs_name, JSON.stringify( data ) );
+         await AsyncStorage.setItem( dbs_name, JSON.stringify( tempDBs ) );
       } catch( err ) {
-         // saving error
+         console.log( "GetNSaveData error: ", err );
       }
+   } */
+
+   async function GetNSaveData( dbs_name ) {
+      let customers = [];
+      let data = {
+         Name: Name,
+         Cellphone: Cellphone,
+         Whatsapp: Whatsapp,
+         Phone: Phone,
+         Phone2: Phone2,
+         Email: Email,
+         Rg: Rg,
+         Cpf: Cpf,
+         Cep: Cep,
+         Estate: Estate,
+         Street: Street,
+         Number: Number,
+         Complemento: Complemento,
+         District: District,
+         City: City,
+         Note: Note 
+      };
+
+      if( AsyncStorage.getItem( dbs_name ) ) {
+         let json = AsyncStorage.getItem( dbs_name );
+         customers = [ 
+            json
+         ];
+         customers.push( data );
+      } else {
+         customers.push( data );
+      }
+      // if( customer ) {
+      //    customers.push( customer );
+      //    localStorage.setItem( "ea.customers", JSON.stringify( customers ) );
+      // }
+      AsyncStorage.setItem( dbs_name, JSON.stringify( customers ) );
+
+      // try {
+      //    if( await AsyncStorage.getItem( dbs_name ) ) {
+      //    const 
+      //       data = {
+      //          Name: Name,
+      //          Cellphone: Cellphone,
+      //          Whatsapp: Whatsapp,
+      //          Phone: Phone,
+      //          Phone2: Phone2,
+      //          Email: Email,
+      //          Rg: Rg,
+      //          Cpf: Cpf,
+      //          Cep: Cep,
+      //          Estate: Estate,
+      //          Street: Street,
+      //          Number: Number,
+      //          Complemento: Complemento,
+      //          District: District,
+      //          City: City,
+      //          Note: Note 
+      //       }
+      //       ,
+      //       jsonValue = await AsyncStorage.getItem( dbs_name )
+      //       ,
+      //       dataList = jsonValue != null ? JSON.parse( jsonValue ) : null
+      //       ,
+      //       tempDBs = [
+      //          ...await dataList
+      //       ]
+      //    ;
+
+      //    tempDBs.push( data );
+         
+      //       console.log( "if( await AsyncStorage.getItem( dbs_name ) ) { data: ", data );
+      //    }
+
+      //    await AsyncStorage.setItem( dbs_name, JSON.stringify( tempDBs ) );
+      // } catch( err ) {
+      //    console.log( "GetNSaveData error: ", err );
+      // }
    }
 
-   async function GetData( dbs_name: string ) {
+   async function GetData( dbs_name ) {
       try {
          const 
             data = await AsyncStorage.getItem( dbs_name );
@@ -162,7 +221,8 @@ export default function NewCustomer( { ...props } ) {
          
          if( data !== undefined ) {
             console.log( "Congrats! here is your prize: ", data );
-            setDBS( JSON.stringify( data ) );
+            // setDBS( JSON.stringify( data ) );
+            setDBS( ["data"] );
          }
       } catch( err ) {
          console.log( "GetData err: ", err );
