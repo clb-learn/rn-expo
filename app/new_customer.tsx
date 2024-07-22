@@ -91,50 +91,6 @@ export default function NewCustomer( { ...props } ) {
       ]
    ;
 
-   /* async function GetNSaveData( dbs_name ) {
-      let customers = [];
-      try {
-         if( await AsyncStorage.getItem( dbs_name ) ) {
-         const 
-            data = {
-               Name: Name,
-               Cellphone: Cellphone,
-               Whatsapp: Whatsapp,
-               Phone: Phone,
-               Phone2: Phone2,
-               Email: Email,
-               Rg: Rg,
-               Cpf: Cpf,
-               Cep: Cep,
-               Estate: Estate,
-               Street: Street,
-               Number: Number,
-               Complemento: Complemento,
-               District: District,
-               City: City,
-               Note: Note 
-            }
-            ,
-            jsonValue = await AsyncStorage.getItem( dbs_name )
-            ,
-            dataList = jsonValue != null ? JSON.parse( jsonValue ) : null
-            ,
-            tempDBs = [
-               ...await dataList
-            ]
-         ;
-
-         tempDBs.push( data );
-         
-            console.log( "if( await AsyncStorage.getItem( dbs_name ) ) { data: ", data );
-         }
-
-         await AsyncStorage.setItem( dbs_name, JSON.stringify( tempDBs ) );
-      } catch( err ) {
-         console.log( "GetNSaveData error: ", err );
-      }
-   } */
-
    async function GetNSaveData( dbs_name ) {
       let customers = [];
       let data = {
@@ -156,74 +112,33 @@ export default function NewCustomer( { ...props } ) {
          Note: Note 
       };
 
-      if( AsyncStorage.getItem( dbs_name ) ) {
-         let json = AsyncStorage.getItem( dbs_name );
-         customers = [ 
-            json
-         ];
+      try {
+         if( await AsyncStorage.getItem( dbs_name ) ) {
+            const 
+               customersDBs = await AsyncStorage.getItem( dbs_name )
+            ;
+            customers = [ ...await JSON.parse( customersDBs ) ]
+         }
+
          customers.push( data );
-      } else {
-         customers.push( data );
+
+         const jsonValue = JSON.stringify( customers );
+         await AsyncStorage.setItem( dbs_name, jsonValue );
+      } catch( err ) {
+        // saving error
       }
-      // if( customer ) {
-      //    customers.push( customer );
-      //    localStorage.setItem( "ea.customers", JSON.stringify( customers ) );
-      // }
-      AsyncStorage.setItem( dbs_name, JSON.stringify( customers ) );
-
-      // try {
-      //    if( await AsyncStorage.getItem( dbs_name ) ) {
-      //    const 
-      //       data = {
-      //          Name: Name,
-      //          Cellphone: Cellphone,
-      //          Whatsapp: Whatsapp,
-      //          Phone: Phone,
-      //          Phone2: Phone2,
-      //          Email: Email,
-      //          Rg: Rg,
-      //          Cpf: Cpf,
-      //          Cep: Cep,
-      //          Estate: Estate,
-      //          Street: Street,
-      //          Number: Number,
-      //          Complemento: Complemento,
-      //          District: District,
-      //          City: City,
-      //          Note: Note 
-      //       }
-      //       ,
-      //       jsonValue = await AsyncStorage.getItem( dbs_name )
-      //       ,
-      //       dataList = jsonValue != null ? JSON.parse( jsonValue ) : null
-      //       ,
-      //       tempDBs = [
-      //          ...await dataList
-      //       ]
-      //    ;
-
-      //    tempDBs.push( data );
-         
-      //       console.log( "if( await AsyncStorage.getItem( dbs_name ) ) { data: ", data );
-      //    }
-
-      //    await AsyncStorage.setItem( dbs_name, JSON.stringify( tempDBs ) );
-      // } catch( err ) {
-      //    console.log( "GetNSaveData error: ", err );
-      // }
    }
 
    async function GetData( dbs_name ) {
       try {
-         const 
-            data = await AsyncStorage.getItem( dbs_name );
-         ;
-         
-         if( data !== undefined ) {
-            console.log( "Congrats! here is your prize: ", data );
-            // setDBS( JSON.stringify( data ) );
-            setDBS( ["data"] );
-         }
+         const data = await AsyncStorage.getItem( dbs_name );
+
+      if( data !== undefined ) {
+         console.log( "Congrats! here is your prize: ", data );
+         setDBS( data );
+      }
+
+         return data != null ? JSON.parse( data ) : null;
       } catch( err ) {
          console.log( "GetData err: ", err );
       }
