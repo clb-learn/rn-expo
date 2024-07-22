@@ -67,7 +67,7 @@ export default function NewCustomer( { ...props } ) {
       ,
       [ Note, setNote ] = useState( "" )
       ,
-      [ DBS, setDBS ] = useState( "" )
+      [ DBS, setDBS ] = useState( [] )
    ;
 
    const 
@@ -113,6 +113,20 @@ export default function NewCustomer( { ...props } ) {
                Note: Note 
             }
          ;
+         let    
+            tempDBs: any[] = []
+         ;
+
+         if( await AsyncStorage.getItem( dbs_name ) ) {
+            const 
+               pureDT: string = await AsyncStorage.getItem( dbs_name )
+               ,
+               tDT = await JSON.parse( pureDT )
+            ;
+
+            tDT.push( data );
+            tempDBs = [ ... tDT ];   
+         }
 
          await AsyncStorage.setItem( dbs_name, JSON.stringify( data ) );
       } catch( err ) {
