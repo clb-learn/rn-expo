@@ -64,7 +64,7 @@ export default function Home( { ...props } ) {
                </c.Tile>
                
                <c.Tile>
-                  <c.Content bg="#fff">
+                  <c.Content bg="#fff" style={{ minHeight: 50, }}>
                      <c.H4 >Nome</c.H4>
                      <c.P color="#000">
                         hfu ufufsdufhs

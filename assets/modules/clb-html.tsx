@@ -300,7 +300,7 @@ export const Tile = ( { ...props } ) => {
             backgroundColor: "#fff0",
             borderRadius: 12,
             borderColor: "#777",
-            elevation: 10,
+            elevation: 5,
             overflow: "hidden",
          }
       } )

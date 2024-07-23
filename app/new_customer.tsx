@@ -170,6 +170,15 @@ export default function NewCustomer( { ...props } ) {
       .
       then( r => console.log( "r: ", r ) );
    }
+
+   async function EraseData() {
+      try {
+         await AsyncStorage.removeItem( "customer_dbs" );
+   
+      } catch( err ) {
+        console.log( "\n\n== == == == == ==\nsaving error: \n", err );
+      }
+   }
    
    return( <>
          <c.Section bg="#f3f3f3">
@@ -354,6 +363,16 @@ export default function NewCustomer( { ...props } ) {
                         />
 
                      </c.Section>
+                     <Touch 
+                        touchSty={{
+                           backgroundColor: "#00559C",
+                        }}
+                        txtSty={{
+                           color: "#fff",
+                        }}
+                        txt="eraseDbs"
+                        onPress={ () => { EraseData() }}
+                     />
                      <Touch 
                         touchSty={{
                            backgroundColor: "#00559C",
