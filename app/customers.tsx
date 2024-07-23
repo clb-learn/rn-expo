@@ -1,6 +1,6 @@
 
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import {
    PageFooter,
@@ -20,9 +20,40 @@ import {
    Text,
    Image,
 } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+let customers = [];
+
+
+async function UpdateCustomersLiveDBs( dbs_name ) {
+   let list = [];
+   try {
+      if( await AsyncStorage.getItem( dbs_name ) ) {
+         const 
+            listDBs = await AsyncStorage.getItem( dbs_name )
+         ;
+         list = [ ...await JSON.parse( listDBs ) ]
+      }
+
+      return( list );
+   } catch( err ) {
+     console.log( "\n\n== == == == == ==\nsaving error: \n", err );
+   }
+}
+// UpdateCustomersLiveDBs( "customer_dbs" ).then( res => { /* customers = [ ...res ];  */console.log( "customers:: ", customers ); } );
+
+useEffect( () => {
+   UpdateCustomersLiveDBs( "customer_dbs" )
+   .
+   then( res => {
+      return customers = [ ...res ]
+   }, [] );
+} );
 
 export default function Customers( { ...props } ) {
+   const 
+      [ liveDB_customers, set_liveDB_customers ] = useState( [ ...customers ] )
+   ;
 
 
    return( <>
@@ -34,36 +65,22 @@ export default function Customers( { ...props } ) {
          </c.Header>
          <c.Section>
             <c.Content gap={ 8 }>
-               <ea.UsersCard 
-                  name="Noely Oliveira Gangello"
-               />
-               <ea.UsersCard 
-                  name="Bernardo Sammarco Gangello"
-               />
-               <ea.UsersCard 
-                  name="Débora Maria Cruz Sammarco"
-               />
-               <ea.UsersCard 
-                  name="Anselmo Sammarco Nunes"
-               />
-               <ea.UsersCard 
-                  name="Rafael Ângelo Sammarco"
-               />
-               <ea.UsersCard 
-                  name="Gabriel Sammarco Nunes"
-               />
-               <ea.UsersCard 
-                  name="Beatriz Michelle Sammarco dos Santos Lima"
-               />
-               <ea.UsersCard 
-                  name="Felipe Gabriel Sammarco dos Santos Lima"
-               />
-               <ea.UsersCard 
-                  name="Miguel Eduardo Sammarco dos Santos Lima"
-               />
-               <ea.UsersCard 
-                  name="Leonardo Sammarco dos Santos Lima"
-               />
+
+               { liveDB_customers.map( customer => {
+                  if( customer != null ) {
+                     return( <>
+                        <ea.UsersCard 
+                           name={ customer.Name }
+                        />
+                     </> );
+                  } /* else {
+                     return( <>
+                        <ea.UsersCard 
+                           name={ "oi" }
+                        />
+                     </> );
+                  } */
+               } ) }
             </c.Content>
          </c.Section>
       </c.Section>

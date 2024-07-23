@@ -4,6 +4,59 @@
 // npx expo install @react-native-async-storage/async-storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+
+
+/* == [ global functions as CStore ]
+== == == == == == == == == */
+export async function Save( dbs_name, object ) {
+   let list = [];
+   // let data = {
+   //    Name: Name,
+   //    Cellphone: Cellphone,
+   //    Whatsapp: Whatsapp,
+   //    Phone: Phone,
+   //    Phone2: Phone2,
+   //    Email: Email,
+   //    Rg: Rg,
+   //    Cpf: Cpf,
+   //    Cep: Cep,
+   //    Estate: Estate,
+   //    Street: Street,
+   //    Number: Number,
+   //    Complemento: Complemento,
+   //    District: District,
+   //    City: City,
+   //    Note: Note 
+   // };
+
+   try {
+      if( await AsyncStorage.getItem( dbs_name ) ) {
+         const 
+            listDBs = await AsyncStorage.getItem( dbs_name )
+         ;
+         list = [ ...await JSON.parse( listDBs ) ]
+      }
+
+      list.push( object );
+
+      const jsonValue = JSON.stringify( list );
+      await AsyncStorage.setItem( dbs_name, jsonValue );
+
+      return( jsonValue );
+   } catch( err ) {
+     console.log( "\n\n== == == == == ==\nsaving error: \n", err );
+   }
+}
+
+
+
+
+
+
+
+
+/* == [ examples ]
+== == == == == == == == == */
 /* Storing string value
  */
 export async function StoreData( value: string, dbs_name: string ) {

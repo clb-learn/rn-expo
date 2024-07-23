@@ -89,6 +89,25 @@ export default function NewCustomer( { ...props } ) {
          setCity,
          setNote
       ]
+      ,
+      customersList = {
+         Name: Name,
+         Cellphone: Cellphone,
+         Whatsapp: Whatsapp,
+         Phone: Phone,
+         Phone2: Phone2,
+         Email: Email,
+         Rg: Rg,
+         Cpf: Cpf,
+         Cep: Cep,
+         Estate: Estate,
+         Street: Street,
+         Number: Number,
+         Complemento: Complemento,
+         District: District,
+         City: City,
+         Note: Note 
+      }
    ;
 
    async function GetNSaveData( dbs_name ) {
@@ -125,7 +144,7 @@ export default function NewCustomer( { ...props } ) {
          const jsonValue = JSON.stringify( customers );
          await AsyncStorage.setItem( dbs_name, jsonValue );
       } catch( err ) {
-        // saving error
+        console.log( "\n\n== == == == == ==\nsaving error: \n", err );
       }
    }
 
@@ -142,6 +161,14 @@ export default function NewCustomer( { ...props } ) {
       } catch( err ) {
          console.log( "GetData err: ", err );
       }
+   }
+
+
+   async function SaveDBs( props ) {
+
+      CStore.Save( props.dbs_name, props.object )
+      .
+      then( r => console.log( "r: ", r ) );
    }
    
    return( <>
@@ -321,7 +348,9 @@ export default function NewCustomer( { ...props } ) {
                               color: "#fff",
                            }}
                            txt="cadastrar"
-                           onPress={ () => { GetNSaveData( "customer_dbs" ) } }
+                           // onPress={ () => { GetNSaveData( "customer_dbs" ) } }
+                           // onPress={ () => { CStore.Save( "customer_dbs", customersList ) } }
+                           onPress={ () => { SaveDBs( { dbs_name: "customer_dbs", object: customersList } ) } }
                         />
 
                      </c.Section>
