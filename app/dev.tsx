@@ -1,6 +1,6 @@
 
 
-import React from "react";
+import React, { useState } from "react";
 
 import {
    Header,
@@ -37,6 +37,7 @@ import {
    Text,
    Image,
    Modal,
+   Pressable,
 } from "react-native";
 
 import {
@@ -46,7 +47,9 @@ import {
 
 
 export default function Dev( { ...props } ) {
-
+   const 
+      [ ModalVisibility, setModalVisibility ] = useState( false )
+   ;
 
    /* return( <>
       <Header title="Dev"/>
@@ -161,6 +164,54 @@ export default function Dev( { ...props } ) {
             <c.H2 color="#fff">Modal: RN</c.H2>
          </c.Header>
          <c.Content>
+            <Pressable 
+               onPress={ () => { setModalVisibility( !ModalVisibility ) } }
+            >
+               <View style={{
+                  borderRadius: 24,
+                  backgroundColor: "#29f",
+                  padding: 16,
+               }}>
+                  <text style={{
+                     color: "#fff",
+                     textAlign: "center",
+                     fontWeight: "bold",
+                     textTransform: "uppercase",
+                  }}>
+                     open modal
+                     </text>
+               </View>
+            </Pressable>
+
+            <Modal visible={ ModalVisibility }>
+               <View style={{ backgroundColor: "#f5f5f5", padding: 18, 
+                  borderRadius: 24,
+               }}>
+                  <Text style={{ color: "#27f", }}>Modal Screen</Text>
+               </View>
+               <view>
+                  <c.Content>
+                     <Pressable 
+                        onPress={ () => { setModalVisibility( !ModalVisibility ) } }
+                     >
+                        <View style={{
+                           borderRadius: 24,
+                           backgroundColor: "#29f",
+                           padding: 16,
+                        }}>
+                           <text style={{
+                              color: "#fff",
+                              textAlign: "center",
+                              fontWeight: "bold",
+                              textTransform: "uppercase",
+                           }}>
+                              close modal
+                              </text>
+                        </View>
+                     </Pressable>
+                  </c.Content>
+               </view>
+            </Modal>
 
          </c.Content>
       </c.Section>
