@@ -36,6 +36,7 @@ import {
    View,
    Text,
    Image,
+   Modal,
 } from "react-native";
 
 import {
@@ -151,6 +152,17 @@ export default function Dev( { ...props } ) {
             </c.Content>
          </c.Section>
 
+      </c.Section>
+
+
+      {/* modal */}
+      <c.Section bg="#245">
+         <c.Header>
+            <c.H2 color="#fff">Modal: RN</c.H2>
+         </c.Header>
+         <c.Content>
+
+         </c.Content>
       </c.Section>
    </> );
 }
