@@ -183,7 +183,12 @@ export default function Dev( { ...props } ) {
                </View>
             </Pressable>
 
-            <Modal visible={ ModalVisibility }>
+            <Modal visible={ ModalVisibility } 
+               
+            style={{
+               backgroundColor: "#212329",
+               width: "80%",
+            }}>
                <View style={{ backgroundColor: "#f5f5f5", padding: 18, 
                   borderRadius: 24,
                }}>
