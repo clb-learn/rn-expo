@@ -10,6 +10,7 @@ import {
    Drawer,
 } from "@/assets/modules/clb-modules";
 
+import api from "@/assets/services/api";
 
 import * as c from "@/assets/modules/clb-html";
 
@@ -25,6 +26,7 @@ import {
    Button,
    ActivityIndicator,
    Alert,
+   TextInput,
 } from "react-native";
 
 import {
@@ -35,6 +37,8 @@ import {
 export default function Dev( { ...props } ) {
    const 
       [ ModalVisibility, setModalVisibility ] = useState( false )
+      ,
+      [ CEP, setCEP ] = useState( "" )
    ;
 
    {/* modal */}
@@ -75,40 +79,51 @@ export default function Dev( { ...props } ) {
                onRequestClose={ () => { setModalVisibility( false ) } }
                animationType="slide"
                presentationStyle="formSheet"
-               style={{
-                  backgroundColor: "#212329",
-                  width: "80%",
-               }}
+               style={ s.modal }
             >
-               <View style={{ backgroundColor: "#f5f5f5", padding: 18, 
-                  borderRadius: 24,
-               }}>
-                  <Text style={{ color: "#27f", }}>Modal Screen</Text>
+               <View style={ s.modalHead }>
+                  <Text style={ s.modalHeadTT }>Modal Screen</Text>
                </View>
                <View>
                   <c.Content>
                      <Pressable 
                         onPress={ () => { setModalVisibility( !ModalVisibility ) } }
                      >
-                        <View style={{
-                           borderRadius: 24,
-                           backgroundColor: "#29f",
-                           padding: 16,
-                        }}>
-                           <Text style={{
-                              color: "#fff",
-                              textAlign: "center",
-                              fontWeight: "bold",
-                              textTransform: "uppercase",
-                           }}>
+                        <View style={ s.btn }>
+                           <Text style={ s.btnTxt}>
                               close modal
-                              </Text>
+                           </Text>
                         </View>
                      </Pressable>
                   </c.Content>
 
-                  <c.Content style={{ backgroundColor: "#fff5" }}>
+                  <c.Content style={ s.modalContent }>
                      {/* npx expo install axios */}
+
+                     <c.Section style={ s.form }>
+                        <c.H4 color="#fc0">cep</c.H4>
+                        <TextInput style={ s.input }
+                        placeholder="11.702-600"
+                        value=""
+                        onChangeText={ text => setCEP( text ) }
+                        keyboardType="name-phone-pad"
+                        />
+
+                        <c.Section style={ s.formFooter }>
+
+                           <Press text="oi"
+                           bg="#fc05" color="#fffc"
+                           onPress={ () => {} }
+                           />
+
+                           <Press text="oi"
+                           style={ s.press }
+                           bg="#f27" color="#fffc"
+                           onPress={ () => {} }
+                           />
+
+                        </c.Section>
+                     </c.Section>
                      
                   </c.Content>
 
@@ -119,3 +134,48 @@ export default function Dev( { ...props } ) {
       </c.Section>
    </> );
 }
+
+const 
+   s = StyleSheet.create( {
+      modal: {
+         backgroundColor: "#212329",
+         width: "80%",
+      },
+      modalHead: { backgroundColor: "#f5f5f5", padding: 18, 
+         borderRadius: 24,
+      },
+      modalHeadTT: { color: "#27f", },
+      btn: {
+         borderRadius: 24,
+         backgroundColor: "#29f",
+         padding: 16,
+      },
+      btnTxt: {
+         color: "#fff",
+         textAlign: "center",
+         fontWeight: "bold",
+         textTransform: "uppercase",
+      },
+      modalContent: { backgroundColor: "#fff5" },
+      form: {
+         backgroundColor: "#f5f5f5",
+         borderRadius: 24,
+         padding: 18,
+         gap: 8,
+      },
+      input: {
+         borderRadius: 22,
+         backgroundColor: "#fff",
+         height: 56,
+         padding: 16,
+      },
+      formFooter: {
+         flexDirection: "row",
+         justifyContent: "center",
+         gap: 8,
+      },
+      press: {
+         backgroundColor: "#fc0fc0",
+      }
+   } )
+;

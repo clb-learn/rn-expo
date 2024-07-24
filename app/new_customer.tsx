@@ -23,6 +23,8 @@ import {
    Keyboard,
 } from "react-native";
 
+import api from "@/assets/services/api";
+
 import * as Form from "@/assets/modules/clb-form";
 import * as CStore from "@/assets/modules/clb-dbs";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -34,6 +36,19 @@ import {
 import * as c from "@/assets/modules/clb-html";
 import customers from "./customers";
 
+
+
+/* == [ properties ]
+== == == == == == == == == */
+function GetCEP( props ) {
+   if( props.cep == "" ) {
+      alert( "o cep digitado não existe" );
+   }
+}
+
+
+/* == [ exports ]
+== == == == == == == == == */
 export default function NewCustomer( { ...props } ) {
    const [ Customers, setCustomers ] = useState( [] );
    const 
@@ -283,9 +298,13 @@ export default function NewCustomer( { ...props } ) {
                            <View style={ s.duoBox }>
                               <Text style={ s.label }>CEP</Text>
                               <TextInput style={ s.input }
-                           value={ Cep }
-                           onChangeText={ setCep }
-                        />
+                              // value={  Cep }
+                              value={  Cep }
+                              placeholder="00.000-00"
+                              onChangeText={ text => { 
+                                 setCep( text )
+                              } }
+                              />
                            </View>
                            
                            <View style={ s.duoBox }>
