@@ -6,7 +6,7 @@ import {
    Header,
    PageFooter,
    BottomNavigationBar,
-} from "../assets/modules/clb-modules";
+} from "@/assets/modules/clb-modules";
 
 import {
    StyleSheet,
@@ -18,9 +18,9 @@ import {
 
 import {
    Icon,
-} from "../assets/modules/clb-icons";
+} from "@/assets/modules/clb-icons";
 
-import * as c from "../assets/modules/clb-html";
+import * as c from "@/assets/modules/clb-html";
 
 
 export default function Home( { ...props } ) {

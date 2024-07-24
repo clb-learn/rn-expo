@@ -10,7 +10,7 @@ import {
    BottomNavigationBar,
    Press,
    Touch,
-} from "@/assets/modules/clb-modules";
+} from "../modules/clb-modules";
 
 import {
    StyleSheet,
@@ -23,19 +23,17 @@ import {
    Keyboard,
 } from "react-native";
 
-import * as Form from "@/assets/modules/clb-form";
-import * as CStore from "@/assets/modules/clb-dbs";
+import * as Form from "../modules/clb-form";
+import * as CStore from "../modules/clb-dbs";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import {
    Icon,
-} from "@/assets/modules/clb-icons";
+} from "../modules/clb-icons";
 
-import * as c from "@/assets/modules/clb-html";
-import customers from "./customers";
+import * as c from "../modules/clb-html";
 
 export default function NewCustomer( { ...props } ) {
-   const [ Customers, setCustomers ] = useState( [] );
    const 
       [ Name, setName ] = useState( "" )
       ,
@@ -93,7 +91,6 @@ export default function NewCustomer( { ...props } ) {
       ]
       ,
       customersList = {
-         id: `c:${ Math.round( Math.random() * 999 ) }-${ Math.round( Math.random() * 999 ) }`,
          Name: Name,
          Cellphone: Cellphone,
          Whatsapp: Whatsapp,
@@ -114,6 +111,7 @@ export default function NewCustomer( { ...props } ) {
    ;
 
    async function GetNSaveData( dbs_name ) {
+      let customers = [];
       let data = {
          Name: Name,
          Cellphone: Cellphone,
@@ -167,13 +165,10 @@ export default function NewCustomer( { ...props } ) {
 
 
    async function SaveDBs( props ) {
-      if( Name != "" ) {
-         Keyboard.dismiss();
 
-         await CStore.Save( props.dbs_name, props.object )
-         .
-         then( r => inputs.forEach( i => i( "" ) ) );
-      }
+      CStore.Save( props.dbs_name, props.object )
+      .
+      then( r => console.log( "r: ", r ) );
    }
 
    async function EraseData() {
@@ -186,7 +181,6 @@ export default function NewCustomer( { ...props } ) {
    }
    
    return( <>
-      <ScrollView>
          <c.Section bg="#f3f3f3">
             <c.Header>
                <c.Content>
@@ -357,16 +351,6 @@ export default function NewCustomer( { ...props } ) {
                         />
                         <Touch 
                            touchSty={{
-                              backgroundColor: "#9c5500",
-                           }}
-                           txtSty={{
-                              color: "#fff",
-                           }}
-                           txt="erase DBs"
-                           onPress={ async () => { await AsyncStorage.removeItem( "customer_dbs" ) } }
-                        />
-                        <Touch 
-                           touchSty={{
                               backgroundColor: "#00559C",
                            }}
                            txtSty={{
@@ -412,7 +396,6 @@ export default function NewCustomer( { ...props } ) {
                </c.Content>
             </c.Section>
          </c.Section>
-      </ScrollView>
    </> );
 }
 

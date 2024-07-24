@@ -128,7 +128,7 @@ export function T( { ...props } ) {
    ;
    return( <>
      <Text style={ {
-         fontSize: 1*16,
+         fontSize: 1*16, 
          fontWeight: "normal",
          color: color,
       } }> { text } </Text>

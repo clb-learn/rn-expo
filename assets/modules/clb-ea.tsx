@@ -36,11 +36,11 @@ export function UsersCard( { ...props } ) {
       <View>
          <View style={{
             flexDirection: "row",
-            backgroundColor: "#e5e5e5",
+            backgroundColor: "#fff",
             borderRadius: 16,
             padding: 16,
             borderColor: "#7777",
-            borderWidth: 1,
+            borderWidth: 0,
          }}>
             <View style={{
                borderRadius: 100,
@@ -70,9 +70,9 @@ export function UsersCard( { ...props } ) {
                // backgroundColor: "#4565",
             }}>
                {/* <c.H4>Anselmo Sammarco Nunes</c.H4> */}
-               <c.H4>{ name }</c.H4>
+               <c.H4 color="#242526">{ name }</c.H4>
                {/* <c.T>(13) 99148-6078</c.T> */}
-               <c.T>{ tel }</c.T>
+               <c.T color="#a5a5a5">{ tel }</c.T>
             </View>
             <View style={{
                flex: .05,

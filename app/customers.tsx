@@ -51,6 +51,8 @@ export default function Customers( { ...props } ) {
       [ Customers, setCustomers ] = useState( [] )
    ;
 
+
+
    useEffect( () => {
       const fetchData = async () => {
         const data = await AsyncStorage.getItem( "customer_dbs" );
@@ -62,35 +64,52 @@ export default function Customers( { ...props } ) {
       fetchData()
         .catch( console.error );
     }, [] );
+
+   // useEffect( () => { Customers.map( customer => {
+   //    return( <>
+   //       <ea.UsersCard 
+   //          key={ customer.id }
+   //          name={ customer.Name }
+   //       />
+   //    </> );
+   // } ) }, [ Customers ] )
+
+   useEffect( () => { Customers.map( customer => {
+      return( <>
+         <ea.UsersCard 
+            key={ customer.id }
+            name={ customer.Name }
+         />
+      </> );
+   } ) }, [ AsyncStorage.getItem( "customer_dbs" ) ] )
    
 
    return( <>
-      <c.Section bg="#f5f5f5" style={{ flex: 1, }}>
-         <c.Header>
-            <c.Content>
-               <c.H2>Clientes</c.H2>
-            </c.Content>
-         </c.Header>
-         <c.Section>
-            <c.Content gap={ 8 }>
+      <ScrollView>
+         <c.Section bg="#e2f4fe" style={{ flex: 1, }}>
+            <c.Header>
+               <c.Content>
+                  <c.H2>Clientes</c.H2>
+               </c.Content>
+            </c.Header>
+            <c.Section>
+               <c.Content gap={ 16 }>
 
-               { Customers.map( customer => {
-                  if( customer != null ) {
-                     return( <>
-                        <ea.UsersCard 
-                           name={ customer.name }
-                        />
-                     </> );
-                  } /* else {
-                     return( <>
-                        <ea.UsersCard 
-                           name={ "oi" }
-                        />
-                     </> );
-                  } */
-               } ) }
-            </c.Content>
+                  { Customers != null ? 
+                     Customers.map( customer => {
+                        return( <>
+                           <ea.UsersCard 
+                              key={ customer.id }
+                              name={ customer.Name }
+                           />
+                        </> );
+                     } )
+                     : 
+                     console.log( "" )
+                  }
+               </c.Content>
+            </c.Section>
          </c.Section>
-      </c.Section>
+      </ScrollView>
    </> );
 }

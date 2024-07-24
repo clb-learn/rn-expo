@@ -1,11 +1,11 @@
 
 
-import Home from "../home";
-import Customers from "../customers";
-import Budgets from "../budgets";
-import Receipts from "../receipts";
-import Dev from "../dev";
-import NewCustomer from "../new_customer";
+import Home from "@/app/home";
+import Customers from "@/app/customers";
+import Budgets from "@/app/budgets";
+import Receipts from "@/app/receipts";
+import Dev from "@/app/dev";
+import NewCustomer from "@/app/new_customer";
 
 const Routes = {
    Home,

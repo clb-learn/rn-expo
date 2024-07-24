@@ -5,7 +5,7 @@ import React from "react";
 import {
    PageFooter,
    BottomNavigationBar,
-} from "../assets/modules/clb-modules";
+} from "@/assets/modules/clb-modules";
 
 import {
    StyleSheet,

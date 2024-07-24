@@ -16,9 +16,9 @@ import {
    AppBarRight,
    BottomNavigationBar,
    PageFooter,
-} from "../assets/modules/clb-modules";
+} from "@/assets/modules/clb-modules";
 
-import { Icon } from "../assets/modules/clb-icons";
+import { Icon } from "@/assets/modules/clb-icons";
 
 export default function RootLayout() {
    return( <>
@@ -89,7 +89,7 @@ export default function RootLayout() {
             options={{
                // headerTitle: "Eletrica & Art",
                headerTitle: () => ( <>
-                  <Image source={ require( "../assets/images/EA/EA-logo-appbar-2.png" ) }
+                  <Image source={ require( "@/assets/images/EA/EA-logo-appbar-2.png" ) }
                      style={ {
                         resizeMode: "contain",
                         width: 140,
