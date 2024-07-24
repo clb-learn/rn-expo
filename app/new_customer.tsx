@@ -2,6 +2,8 @@
 
 import React, {
    useState,
+   useEffect,
+   useRef,
 } from "react";
 
 import {
@@ -23,7 +25,7 @@ import {
    Keyboard,
 } from "react-native";
 
-import api from "@/assets/services/api";
+import { api_GetCEP } from "@/assets/services/api";
 
 import * as Form from "@/assets/modules/clb-form";
 import * as CStore from "@/assets/modules/clb-dbs";
@@ -34,17 +36,14 @@ import {
 } from "@/assets/modules/clb-icons";
 
 import * as c from "@/assets/modules/clb-html";
+import { _ } from "@/assets/modules/clb";
 import customers from "./customers";
 
 
 
 /* == [ properties ]
 == == == == == == == == == */
-function GetCEP( props ) {
-   if( props.cep == "" ) {
-      alert( "o cep digitado não existe" );
-   }
-}
+
 
 
 /* == [ exports ]
@@ -72,7 +71,7 @@ export default function NewCustomer( { ...props } ) {
       ,
       [ Estate, setEstate ] = useState( "" )
       ,
-      [ Street, setStreet ] = useState( "" )
+      [ Logradouro, setLogradouro ] = useState( "" )
       ,
       [ Number, setNumber ] = useState( "" )
       ,
@@ -99,7 +98,7 @@ export default function NewCustomer( { ...props } ) {
          setCpf,
          setCep,
          setEstate,
-         setStreet,
+         setLogradouro,
          setNumber,
          setComplemento,
          setDistrict,
@@ -119,13 +118,15 @@ export default function NewCustomer( { ...props } ) {
          Cpf: Cpf,
          Cep: Cep,
          Estate: Estate,
-         Street: Street,
+         Logradouro: Logradouro,
          Number: Number,
          Complemento: Complemento,
          District: District,
          City: City,
          Note: Note 
       }
+      ,
+      id_Name = useRef( null )
    ;
 
    async function GetNSaveData( dbs_name ) {
@@ -140,7 +141,7 @@ export default function NewCustomer( { ...props } ) {
          Cpf: Cpf,
          Cep: Cep,
          Estate: Estate,
-         Street: Street,
+         Logradouro: Logradouro,
          Number: Number,
          Complemento: Complemento,
          District: District,
@@ -194,9 +195,33 @@ export default function NewCustomer( { ...props } ) {
    async function EraseData() {
       try {
          await AsyncStorage.removeItem( "customer_dbs" );
-   
+         id_Name.current.focus();
       } catch( err ) {
         console.log( "\n\n== == == == == ==\nsaving error: \n", err );
+      }
+   }
+
+   async function GetCEP() {
+      if( Cep == "" ) {
+         alert( "o cep digitado não existe" );
+         setCep( "" );
+         return;
+      }
+   
+      try {
+         const 
+            response = await api_GetCEP.get( `/${ Cep }/json` )
+         ;
+         _( response.data );
+   
+         setCep( response.data.cep );
+         setEstate( response.data.uf );
+         setLogradouro( response.data.logradouro );
+         setDistrict( response.data.bairro );
+         setCity( response.data.localidade );
+
+      } catch( err ) {
+         console.log( "api_GetCEP err: \n", err );
       }
    }
    
@@ -213,14 +238,15 @@ export default function NewCustomer( { ...props } ) {
 
                   <View style={ s.form }>
                      <c.Section style={ s.header }>
-                        <c.H4>Cadastro Rápido</c.H4>
+                        <c.H4>Cliente { Name }</c.H4>
                      </c.Section>
 
                      <c.Section cliente section>
-                        <Text style={ s.label }>Nome do Cliente { Name }</Text>
+                        <Text style={ s.label }>Nome do Cliente</Text>
                         <TextInput style={ s.input }
-                           value={ Name }
-                           onChangeText={ setName }
+                        value={ Name }
+                        ref={ id_Name }
+                        onChangeText={ setName }
                         />
                      </c.Section>
 
@@ -304,6 +330,7 @@ export default function NewCustomer( { ...props } ) {
                               onChangeText={ text => { 
                                  setCep( text )
                               } }
+                              onBlur={ () => { GetCEP( { cep: Cep, set: setCep } ) } }
                               />
                            </View>
                            
@@ -318,8 +345,8 @@ export default function NewCustomer( { ...props } ) {
                         
                         <Text style={ s.label }>Rua</Text>
                         <TextInput style={ s.input }
-                           value={ Street }
-                           onChangeText={ setStreet }
+                           value={ Logradouro }
+                           onChangeText={ setLogradouro }
                         />
                         
                         <View style={ [ s.duo, {  } ] }>
@@ -372,7 +399,10 @@ export default function NewCustomer( { ...props } ) {
                         <Touch 
                            txt="apagar tudo"
                            onPressIn={ () => { Keyboard.dismiss() } }
-                           onPressOut={ () => { Form.ClearInputs( inputs ) } }
+                           onPressOut={ () => { 
+                              Form.ClearInputs( inputs ); 
+                              id_Name.current.focus(); 
+                           } }
                         />
                         <Touch 
                            touchSty={{

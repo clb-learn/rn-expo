@@ -3,11 +3,11 @@
 import axios from "axios";
 
 
-const 
-   api = axios.create( {
+export const 
+   api_GetCEP = axios.create( {
       baseURL: "https://viacep.com.br/ws",
    } )
 ;
 
 
-export default api;
+// export default api_GetCEP;
