@@ -1,15 +1,15 @@
 
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Component } from "react";
 
 import {
    PageFooter,
    BottomNavigationBar,
    Fab,
-} from "../assets/modules/clb-modules";
+} from "@/assets/modules/clb-modules";
 
-import * as c from "../assets/modules/clb-html";
-import * as ea from "../assets/modules/clb-ea";
+import * as c from "@/assets/modules/clb-html";
+import * as ea from "@/assets/modules/clb-ea";
 
 import { Icon } from "@/assets/modules/clb-icons";
 
@@ -22,42 +22,50 @@ import {
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-let customers = [];
 
-
-async function UpdateCustomersLiveDBs( dbs_name ) {
-   let list = [];
-   try {
-      if( await AsyncStorage.getItem( dbs_name ) ) {
-         const 
-            listDBs = await AsyncStorage.getItem( dbs_name )
-         ;
-         list = [ ...await JSON.parse( listDBs ) ]
-      }
-
-      return( list );
-   } catch( err ) {
-     console.log( "\n\n== == == == == ==\nsaving error: \n", err );
-   }
+/* == [ properties ]
+== == == == == == == == == */
+async function InsertDBs() {
+   await AsyncStorage.setItem( "customer_dbs", JSON.stringify( [
+      {
+         name: "Débora", gender: "feminino"
+      },
+      {
+         name: "Noely", gender: "feminino"
+      },
+      {
+         name: "Bernardo", gender: "masculino"
+      },
+      {
+         name: "Anselmo", gender: "masculino"
+      },
+   ] ) );
 }
-// UpdateCustomersLiveDBs( "customer_dbs" ).then( res => { /* customers = [ ...res ];  */console.log( "customers:: ", customers ); } );
+// InsertDBs();
 
-useEffect( () => {
-   UpdateCustomersLiveDBs( "customer_dbs" )
-   .
-   then( res => {
-      return customers = [ ...res ]
-   }, [] );
-} );
 
+/* == [ exports ]
+== == == == == == == == == */
 export default function Customers( { ...props } ) {
    const 
-      [ liveDB_customers, set_liveDB_customers ] = useState( [ ...customers ] )
+      [ Customers, setCustomers ] = useState( [] )
    ;
 
+   useEffect( () => {
+      const fetchData = async () => {
+        const data = await AsyncStorage.getItem( "customer_dbs" );
+        const json = await JSON.parse( data );
+         console.log( "json: \n\n\n", json );
+        setCustomers( json );
+      }
+    
+      fetchData()
+        .catch( console.error );
+    }, [] );
+   
 
    return( <>
-      <c.Section>
+      <c.Section bg="#f5f5f5" style={{ flex: 1, }}>
          <c.Header>
             <c.Content>
                <c.H2>Clientes</c.H2>
@@ -66,11 +74,11 @@ export default function Customers( { ...props } ) {
          <c.Section>
             <c.Content gap={ 8 }>
 
-               { liveDB_customers.map( customer => {
+               { Customers.map( customer => {
                   if( customer != null ) {
                      return( <>
                         <ea.UsersCard 
-                           name={ customer.Name }
+                           name={ customer.name }
                         />
                      </> );
                   } /* else {

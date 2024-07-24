@@ -20,21 +20,23 @@ import {
 export default function Homepage( { ...props } ) {
 
 
-//    return( <>
-//       <ScrollView style={{ flex: 1,  }}>
-//          { props.page }
-//          <PageFooter />
-//       </ScrollView>
-// </> );
-
+   // return( <>
+   //       <ScrollView style={{ flex: 1,  }} justifyContent="space-between">
+   //          <ScrollView style={{ flex: 1,  }}>
+   //             { props.page }
+   //          </ScrollView>
+   //          <PageFooter />
+   //       </ScrollView>
+   //       <Fab />
+   // </> );
 
    return( <>
-         <ScrollView style={{ flex: 1,  }} justifyContent="space-between">
-         <ScrollView style={{ flex: 1,  }}>
+      <View style={{
+         flex: 1,
+         backgroundColor: "#212329",
+      }}>
             { props.page }
-         </ScrollView>
-            {/* <PageFooter /> */}
-         </ScrollView>
-         <Fab />
+      </View>
+      <Fab />
    </> );
 }

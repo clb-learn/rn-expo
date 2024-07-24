@@ -4,6 +4,18 @@
 // npx expo install @react-native-async-storage/async-storage
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// "working getDBs_n_setDBs"
+// useEffect( () => {
+//    const fetchData = async () => {
+//       const data = await AsyncStorage.getItem( "customer_dbs" );
+//       const json = await JSON.parse( data );
+//          console.log( "json: \n\n\n", json );
+//       setCustomers( json );
+//    }
+
+//    fetchData()
+//       .catch( console.error );
+// }, [] );
 
 
 /* == [ global functions as CStore ]

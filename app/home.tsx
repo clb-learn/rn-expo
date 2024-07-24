@@ -32,7 +32,7 @@ export default function Home( { ...props } ) {
             <c.H2 color="#00559C">Home</c.H2>
          </c.Content>
       </c.Header>
-      <c.Section bg="#f5f5f5">
+      <c.Section bg="#f5f5f5" style={{ flex: 1, }}>
          <c.Content>
             <c.Tiles style={{ flexDirection: "row", justifyContent: "space-between" }}>
 

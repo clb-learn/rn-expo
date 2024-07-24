@@ -14,7 +14,6 @@ import {
 import * as c from "@/assets/modules/clb-html";
 
 import {
-   StatusBar,
    StyleSheet,
    ScrollView,
    View,
@@ -22,9 +21,6 @@ import {
    Image,
    Modal,
    Pressable,
-   Button,
-   ActivityIndicator,
-   Alert,
 } from "react-native";
 
 import {
@@ -32,21 +28,21 @@ import {
 } from "@/assets/modules/clb-icons";
 
 
-export default function Dev( { ...props } ) {
+export default function Template_Modal( { ...props } ) {
    const 
       [ ModalVisibility, setModalVisibility ] = useState( false )
    ;
 
    {/* modal */}
    return( <>
-      <c.Section bg="#245" style={{
-         flex: 1,
-         // minHeight: 750,
-      }}>
+      <View>
+         <Text>Dev Page</Text>
+      </View>
+
+
+      <c.Section bg="#245">
          <c.Header>
-            <c.Content>
             <c.H2 color="#fff">Modal: RN</c.H2>
-            </c.Content>
          </c.Header>
          <c.Content>
             <Pressable 
