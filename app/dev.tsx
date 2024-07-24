@@ -68,6 +68,9 @@ export default function Dev( { ...props } ) {
                </View>
             </Pressable>
 
+
+            {/*  == [ Modal ]
+            == == == == == == == == ==  */}
             <Modal visible={ ModalVisibility } 
                onRequestClose={ () => { setModalVisibility( false ) } }
                animationType="slide"
@@ -103,6 +106,12 @@ export default function Dev( { ...props } ) {
                         </View>
                      </Pressable>
                   </c.Content>
+
+                  <c.Content style={{ backgroundColor: "#fff5" }}>
+                     {/* npx expo install axios */}
+                     
+                  </c.Content>
+
                </View>
             </Modal>
 
